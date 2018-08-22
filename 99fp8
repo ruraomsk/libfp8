@@ -1,0 +1,4 @@
+# Configuration file for FP8 CPC108
+# This file has been automatically generated
+LD_LIBRARY_PATH=/usr/local/lib
+LD_RUN_PATH=/usr/local/lib

@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fp8
+Description: FP8 CPC108 library
+Version: 1.1.1
+Libs: -L${libdir} -lfp8
+Cflags: -I${includedir}/fp8

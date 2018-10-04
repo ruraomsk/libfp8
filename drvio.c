@@ -273,8 +273,6 @@ void WakeUpDriver() {
     while (drv->code_driver != 0) {
         table_drv *table = drv->table;
         if (table->error == 0x80 || table->error == 0x90) {
-            //            printf("ITS A LIFE!!!%hhx\n", table->error);
-            //            printf("%d\n", table->address);
             NeedReInit = 1;
         }
         drv++;

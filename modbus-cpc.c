@@ -114,8 +114,9 @@ void * Reconnect(void *args) {
                     syslog(LOG_INFO,"Reconect %s \n", md->ip1);
                     ctx = modbus_new_tcp(md->ip1, md->port);
                     if (modbus_connect(ctx) == -1) {
-                        syslog(LOG_ERR,"Master Connection failed on ip=%s error%s\n", md->ip1, modbus_strerror(errno));
+                        syslog(LOG_ERR,"Master Connection failed on ip=%s error %s\n", md->ip1, modbus_strerror(errno));
                         modbus_free(ctx);
+                        md->context->ctx1=NULL;
                     } else {
                         pthread_mutex_lock(&mutex);
                         md->context->ctx1 = ctx;
@@ -127,8 +128,9 @@ void * Reconnect(void *args) {
                     syslog(LOG_INFO,"Reconect %s \n", md->ip2);
                     ctx = modbus_new_tcp(md->ip2, md->port);
                     if (modbus_connect(ctx) == -1) {
-                        syslog(LOG_ERR,"Master Connection failed on ip=%s error%s\n", md->ip2, modbus_strerror(errno));
+                        syslog(LOG_ERR,"Master Connection failed on ip=%s error %s\n", md->ip2, modbus_strerror(errno));
                         modbus_free(ctx);
+                        md->context->ctx2=NULL;
                     } else {
                         pthread_mutex_lock(&mutex);
                         md->context->ctx2 = ctx;

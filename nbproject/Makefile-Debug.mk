@@ -71,37 +71,37 @@ LDLIBSOPTIONS=
 ${OBJECTDIR}/UDPTrasport.o: UDPTrasport.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UDPTrasport.o UDPTrasport.c
+	$(COMPILE.c) -g -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UDPTrasport.o UDPTrasport.c
 
 ${OBJECTDIR}/cycleBuff.o: cycleBuff.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cycleBuff.o cycleBuff.c
+	$(COMPILE.c) -g -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cycleBuff.o cycleBuff.c
 
 ${OBJECTDIR}/drvio.o: drvio.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvio.o drvio.c
+	$(COMPILE.c) -g -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvio.o drvio.c
 
 ${OBJECTDIR}/modbus-cpc.o: modbus-cpc.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/modbus-cpc.o modbus-cpc.c
+	$(COMPILE.c) -g -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/modbus-cpc.o modbus-cpc.c
 
 ${OBJECTDIR}/netphoto.o: netphoto.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/netphoto.o netphoto.c
+	$(COMPILE.c) -g -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/netphoto.o netphoto.c
 
 ${OBJECTDIR}/savervar.o: savervar.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/savervar.o savervar.c
+	$(COMPILE.c) -g -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/savervar.o savervar.c
 
 ${OBJECTDIR}/variables.o: variables.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/variables.o variables.c
+	$(COMPILE.c) -g -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/variables.o variables.c
 
 # Subprojects
 .build-subprojects:

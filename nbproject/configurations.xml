@@ -62,6 +62,7 @@
       <compileType>
         <cTool>
           <incDir>
+            <pElem>/root/linux-4.14.70</pElem>
             <pElem>D:/cpc108/include</pElem>
           </incDir>
         </cTool>

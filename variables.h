@@ -84,7 +84,8 @@ Value * newValue(VarCtrl *vc);
 void destroyValue(Value *val);
 int getDataValue(Value *val, void *value);
 int setDataValue(Value *val, void *value, char error);
-
+int setData(int idVar, void* val);
+int moveData(int idVar, int idVarSrc);
 /* создает символьное представление значения переменной общего вида 
  */
 char *valueToString(Value *val);

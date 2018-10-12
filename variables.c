@@ -224,6 +224,19 @@ int setData(int idVar, void* val){
     memcpy(vc->value, val, len+1);
     return 1;
 }
+int moveData(int idVar, int idVarSrc){
+    VarCtrl *vc = findVariable(idVar);
+    if (vc == NULL) return 0;
+    int len = varLen(vc);
+    if (len == 0) return 0;
+    VarCtrl *vcSrc=findVariable(idVarSrc);
+    if (vcSrc == NULL) return 0;
+    int lenSrc = varLen(vcSrc);
+    if (len == 0) return 0;
+    if(len!=lenSrc) return 0;
+    memcpy(vc->value, vcSrc->value, len+1);
+    return 1;
+}
 /*
  * Читает из буфера значений только значение по id переменной
  * 0 - нет такой переменной

@@ -29,7 +29,7 @@
 #include "modbus-cpc.h"
 
 static int work = 1;
-static ModbusDevice *mdStep = mdStart;
+static ModbusDevice *mdStep;
 
 /* Возвращает размер переменной в регистрах
  */

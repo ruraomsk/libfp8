@@ -205,7 +205,7 @@ void initModbusDevices(ModbusDevice *modbuses) {
 /* делает один шаг всех драйверов модбаса
  */
 void makeStepModbusDevices() {
-    if (mdStep->port == 0) mdStep = mdStart;
+    if (mdStep->port < 0) mdStep = mdStart;
     if (mdStep->typeDevice == 0) {
         pthread_mutex_lock(&mutex);
         if (slsrv_step(mdStep) != 0) {

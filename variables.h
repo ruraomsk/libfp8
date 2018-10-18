@@ -91,7 +91,7 @@ int moveData(int idVar, int idVarSrc);
  */
 char *valueToString(Value *val);
 char *variableToString(short id);
-char *variableArrayToString(short id,int index);
+char *variableArrayToString(short id,short index);
 /*
  * Записывает в буфер значений только значение по id переменной
  * 0 - нет такой переменной

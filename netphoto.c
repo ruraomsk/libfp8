@@ -36,7 +36,7 @@ void *lister(void *port) {
     //Create socket
     socket_desc = socket(AF_INET, SOCK_STREAM, 0);
     if (socket_desc == -1) {
-        syslog(LOG_ERR,"Could not create socket for Netphoto \n");
+        syslog(LOG_ERR, "Could not create socket for Netphoto \n");
         pthread_exit(0);
     }
     //    puts("Socket created");
@@ -49,7 +49,7 @@ void *lister(void *port) {
     //Bind
     if (bind(socket_desc, (struct sockaddr *) &server, sizeof (server)) < 0) {
         //print the error message
-        syslog(LOG_ERR,"Netphoto bind failed. Error\n");
+        syslog(LOG_ERR, "Netphoto bind failed. Error\n");
         pthread_exit(0);
     }
     //    puts("bind done");
@@ -63,7 +63,7 @@ void *lister(void *port) {
 
 
     //Accept and incoming connection
-    syslog(LOG_INFO,"Netphoto waiting for incoming connections:%d...\n", port_listen);
+    syslog(LOG_INFO, "Netphoto waiting for incoming connections:%d...\n", port_listen);
     c = sizeof (struct sockaddr_in);
     while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t*) & c))) {
         //        printf("is incoming connections:%d...\n", client_sock);
@@ -83,7 +83,7 @@ void *lister(void *port) {
     }
 
     if (client_sock < 0) {
-        syslog(LOG_ERR,"Netphoto accept failed\n");
+        syslog(LOG_ERR, "Netphoto accept failed\n");
         close(client_sock);
         pthread_exit(0);
     }
@@ -101,13 +101,13 @@ void connection_handler(int *socket_desc) {
     read_size = recv(sock, client_message, 199, 0);
     //Send the message back to client
     if (read_size == 0) {
-        syslog(LOG_ERR,"Netphoto recv failed\n");
+        syslog(LOG_ERR, "Netphoto recv failed\n");
         close(sock);
         free(socket_desc);
         return;
         //            continue;
     } else if (read_size < 0) {
-        syslog(LOG_ERR,"Netphoto recv failed\n");
+        syslog(LOG_ERR, "Netphoto recv failed\n");
         close(sock);
         free(socket_desc);
         return;
@@ -119,7 +119,7 @@ void connection_handler(int *socket_desc) {
         sscanf(client_message, " %d %d", &stId, &endId);
         out_message = malloc(len_mess);
         if (out_message == NULL) {
-            syslog(LOG_ERR,"Netphoto no allocated memoty \n");
+            syslog(LOG_ERR, "Netphoto no allocated memoty \n");
             close(sock);
             free(socket_desc);
             return;
@@ -130,7 +130,7 @@ void connection_handler(int *socket_desc) {
             for (int i = stId; i <= endId; i++) {
                 VarCtrl *vc = findVariable(i);
                 if (vc == NULL) continue;
-                if(vc->size > 1) continue;
+                if (vc->size > 1) continue;
                 sprintf(message, "<val id=\"%d\" value=\"%s\"/>\n", i, variableToString(i));
                 strcat(out_message, message);
                 if (strlen(out_message)>(len_mess - 1000)) break;
@@ -143,48 +143,45 @@ void connection_handler(int *socket_desc) {
         free(out_message);
 
     };
-    if(client_message[0] == 'W') {
+    if (client_message[0] == 'W') {
         client_message[0] = ' ';
         int stId = 0;
         char value[120];
         sscanf(client_message, " %d %s", &stId, value);
         syslog(LOG_ERR, "Netphoto id=%d , value=%s\n", stId, value);
-//        printf("%d %s \n", stId, value);
+        //        printf("%d %s \n", stId, value);
         if (stId > 0) {
             stringToVariable(stId, value);
         }
     }
     if (client_message[0] == 'A') {
         client_message[0] = ' ';
-        int stId=0,lenId  = 0;
+        int stId = 0, lenId = 0;
         sscanf(client_message, " %d %d", &stId, &lenId);
         out_message = malloc(len_mess);
         if (out_message == NULL) {
-            syslog(LOG_ERR,"Netphoto no allocated memoty \n");
+            syslog(LOG_ERR, "Netphoto no allocated memoty \n");
             close(sock);
             free(socket_desc);
             return;
             //            pthread_exit(0);
         }
         VarCtrl *vc = findVariable(stId);
-        if(vc==NULL) {
-            syslog(LOG_ERR,"Netphoto not found variable %d\n",stId);
+        if (vc == NULL) {
+            syslog(LOG_ERR, "Netphoto not found variable %d\n", stId);
             close(sock);
             free(socket_desc);
             return;
         }
         for (int i = 0; i < lenId; i++) {
-                sprintf(message, "%s ", variableArrayToString(vc,i));
-                strcat(out_message, message);
-                if (strlen(out_message)>(len_mess - 1000)) break;
-            }
+            sprintf(message, "%s ", variableArrayToString(vc, i));
+            strcat(out_message, message);
+            if (strlen(out_message)>(len_mess - 1000)) break;
         }
-        //Send some messages to the client
-        //    sprintf(message,"%6d",strlen(out_message));
         write(sock, out_message, strlen(out_message));
         free(out_message);
-   };
-    
+    }
+
     close(sock);
     free(socket_desc);
     return;
@@ -193,11 +190,11 @@ void connection_handler(int *socket_desc) {
 
 void initNetPhoto() {
     if (pthread_create(&thread_net, NULL, lister, NULL) != 0) {
-        syslog(LOG_ERR,"Netphoto Can't create listen thread\n");
+        syslog(LOG_ERR, "Netphoto Can't create listen thread\n");
     }
 }
 
-void stopNetPhoto(){
+void stopNetPhoto() {
     close(socket_desc);
-    syslog(LOG_ERR,"netPhoto stoped...\n");
+    syslog(LOG_ERR, "netPhoto stoped...\n");
 }

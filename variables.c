@@ -96,9 +96,9 @@ VarCtrl * findVariable(int idVar) {
  * возвращает указатель на неею Если не нужна то удаляется фунцией destroyValue
  */
 Value * newValue(VarCtrl *vc) {
-    Value *val = sizeof(val->idVariable)+(vc->size*(sizeof(val->value)+1));
+    Value *val = malloc(sizeof(val->idVariable)+(vc->size*(sizeof(val->value)+1)));
     if (val == NULL) return NULL;
-    memset(val->value, 0, vc->size*(sizeof(val->value)+1));
+    memset(&val->value, 0, vc->size*(sizeof(val->value)+1));
     val->idVariable = vc->idVariable;
     return val;
 }
@@ -177,7 +177,7 @@ char *variableArrayToString(short id,short index) {
     //    int len=varLen(vc);
     //    if(len==0) return 0;
     Convert cv ;
-    memcpy(cv,vc->value+(varLen(vc)+1)*index,varLen(vc));
+    memcpy(&cv,&vc->value+(varLen(vc)+1)*index,varLen(vc));
     switch (vc->format) {
         case boolean:
             sprintf(str, "%s", cv.value.b[0] == 0 ? "false" : "true");

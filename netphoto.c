@@ -130,6 +130,7 @@ void connection_handler(int *socket_desc) {
             for (int i = stId; i <= endId; i++) {
                 VarCtrl *vc = findVariable(i);
                 if (vc == NULL) continue;
+                if(vc->size > 1) continue;
                 sprintf(message, "<val id=\"%d\" value=\"%s\"/>\n", i, variableToString(i));
                 strcat(out_message, message);
                 if (strlen(out_message)>(len_mess - 1000)) break;
@@ -141,7 +142,8 @@ void connection_handler(int *socket_desc) {
         write(sock, out_message, strlen(out_message));
         free(out_message);
 
-    } else {
+    };
+    if(client_message[0] == 'W') {
         client_message[0] = ' ';
         int stId = 0;
         char value[120];
@@ -152,6 +154,37 @@ void connection_handler(int *socket_desc) {
             stringToVariable(stId, value);
         }
     }
+    if (client_message[0] == 'A') {
+        client_message[0] = ' ';
+        int stId=0,lenId  = 0;
+        sscanf(client_message, " %d %d", &stId, &lenId);
+        out_message = malloc(len_mess);
+        if (out_message == NULL) {
+            syslog(LOG_ERR,"Netphoto no allocated memoty \n");
+            close(sock);
+            free(socket_desc);
+            return;
+            //            pthread_exit(0);
+        }
+        VarCtrl *vc = findVariable(stId);
+        if(vc==NULL) {
+            syslog(LOG_ERR,"Netphoto not found variable %d\n",stId);
+            close(sock);
+            free(socket_desc);
+            return;
+        }
+        for (int i = 0; i < lenId; i++) {
+                sprintf(message, "%s ", variableArrayToString(vc,i));
+                strcat(out_message, message);
+                if (strlen(out_message)>(len_mess - 1000)) break;
+            }
+        }
+        //Send some messages to the client
+        //    sprintf(message,"%6d",strlen(out_message));
+        write(sock, out_message, strlen(out_message));
+        free(out_message);
+   };
+    
     close(sock);
     free(socket_desc);
     return;

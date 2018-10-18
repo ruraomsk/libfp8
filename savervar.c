@@ -49,10 +49,12 @@ void initSaver(char *filename, short * arrayVarNom) {
         statusopen = 0;
     }
     if (statusopen == 0) {
-        Value temp;
+        Value *temp;
         Value *val = valueBuffer;
         for (int i = 0; i < countSaveBuffer; i++) {
             VarCtrl *vr = findVariable(saveIdArray[i]);
+            if(vr==NULL) continue;
+            temp=malloc(bufferLen(vr));
             readValue(i, &temp);
             memcpy(vr->value, &temp.value, varLen(vr));
             memcpy(val->value.b, &temp.value, varLen(vr));

@@ -57,6 +57,10 @@ int varLen(VarCtrl *vc) {
     }
     return 0;
 }
+int bufferLen(VarCtrl *vc) {
+    return vc->size*(varLen(vc)+1);
+}
+
 static VarCtrl *vct;
 
 /*
@@ -92,9 +96,9 @@ VarCtrl * findVariable(int idVar) {
  * возвращает указатель на неею Если не нужна то удаляется фунцией destroyValue
  */
 Value * newValue(VarCtrl *vc) {
-    Value *val = malloc(sizeof (Value));
+    Value *val = sizeof(val->idVariable)+(vc->size*(sizeof(val->value)+1));
     if (val == NULL) return NULL;
-    memset(val, sizeof (Value), sizeof (char));
+    memset(val->value, 0, vc->size*(sizeof(val->value)+1));
     val->idVariable = vc->idVariable;
     return val;
 }
@@ -160,6 +164,43 @@ char *variableToString(short id) {
             return str;
         case float8b:
             sprintf(str, "%lf", cv->value.d);
+            return str;
+    }
+    sprintf(str, "error format %d", (int) vc->format);
+    return str;
+}
+char *variableArrayToString(short id,short index) {
+    VarCtrl *vc = findVariable(id);
+    sprintf(str," ");
+    if (vc == NULL) return str;
+    if(vc->size<=index) return str;
+    //    int len=varLen(vc);
+    //    if(len==0) return 0;
+    Convert cv ;
+    memcpy(cv,vc->value+(varLen(vc)+1)*index,varLen(vc));
+    switch (vc->format) {
+        case boolean:
+            sprintf(str, "%s", cv.value.b[0] == 0 ? "false" : "true");
+            return str;
+        case char1b:
+            sprintf(str, "%hhx", cv.value.b[0]);
+            return str;
+        case uint2b:
+        case sint2b:
+            sprintf(str, "%d", (int) cv.value.s[0]);
+            return str;
+        case uint4b:
+        case sint4b:
+            sprintf(str, "%d", cv.value.i[0]);
+            return str;
+        case float4b:
+            sprintf(str, "%f", cv.value.f[0]);
+            return str;
+        case sint8b:
+            sprintf(str, "%lld", cv.value.l);
+            return str;
+        case float8b:
+            sprintf(str, "%lf", cv.value.d);
             return str;
     }
     sprintf(str, "error format %d", (int) vc->format);
@@ -234,7 +275,7 @@ int moveData(int idVar, int idVarSrc){
     int lenSrc = varLen(vcSrc);
     if (len == 0) return 0;
     if(len!=lenSrc) return 0;
-    memcpy(vc->value, vcSrc->value, len+1);
+    memcpy(vc->value, vcSrc->value, bufferLen(vc));
     return 1;
 }
 /*

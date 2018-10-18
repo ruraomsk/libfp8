@@ -41,6 +41,7 @@ typedef struct __attribute__((packed)){
 typedef struct __attribute__((packed)){
     int idVariable;
     char format;
+    short size;
     char * value;
 } VarCtrl;
 typedef struct __attribute__((packed)){
@@ -90,12 +91,14 @@ int moveData(int idVar, int idVarSrc);
  */
 char *valueToString(Value *val);
 char *variableToString(short id);
+char *variableArrayToString(short id,int index);
 /*
  * Записывает в буфер значений только значение по id переменной
  * 0 - нет такой переменной
  * 1 - операция успешна 
  */
 int setDataVariable(int idVar, void* val, char error);
+int setArrayDataVariable(int idVar, void* val, char error,int index);
 /*
  * Записывает в буфер значений только состояние байта достоверности по id переменной 
  * 0 - нет такой переменной
@@ -132,6 +135,7 @@ int writeRecord(int recno, Value *value);
 
 
 int varLen(VarCtrl *vc);
+int byfferLen(VarCtrl *vc);
 void swapBytes(const void *src, void *dst,int len);
 void stringToVariable(short id, char *value);
 #endif /* VARIABLES_H */

@@ -166,6 +166,7 @@ void connection_handler(int *socket_desc) {
             return;
             //            pthread_exit(0);
         }
+        strcpy(out_message, " ");
         VarCtrl *vc = findVariable(stId);
         if (vc == NULL) {
             syslog(LOG_ERR, "Netphoto not found variable %d\n", stId);

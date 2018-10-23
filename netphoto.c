@@ -28,6 +28,7 @@
 static pthread_t thread_net;
 static int socket_desc;
 #define port_listen 1080
+#define SLEEP_TIME 10
 
 void *lister(void *port) {
     int client_sock, c, *new_sock;
@@ -47,13 +48,12 @@ void *lister(void *port) {
     server.sin_port = htons(port_listen);
 
     //Bind
-    if (bind(socket_desc, (struct sockaddr *) &server, sizeof (server)) < 0) {
+    while (bind(socket_desc, (struct sockaddr *) &server, sizeof (server)) < 0) {
         //print the error message
-        syslog(LOG_ERR, "Netphoto bind failed. Error\n");
-        pthread_exit(0);
+        syslog(LOG_ERR, "Netphoto bind failed. Error awaiting %d seconds...\n",SLEEP_TIME);
+        if (sleep(SLEEP_TIME) != 0)
+            pthread_exit(0);
     }
-    //    puts("bind done");
-
     //Listen
     listen(socket_desc, 10);
 
@@ -95,7 +95,7 @@ void connection_handler(int *socket_desc) {
     int sock = *socket_desc;
     int read_size;
     char message[120], client_message[200], *out_message;
-#define len_mess 128000
+    #define len_mess 128000
     //    while (1) {
     memset(client_message, 0, 200);
     read_size = recv(sock, client_message, 199, 0);

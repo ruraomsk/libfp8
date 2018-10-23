@@ -175,7 +175,7 @@ void connection_handler(int *socket_desc) {
             return;
         }
         for (int i = 0; i < lenId; i++) {
-            sprintf(message, "%s ", variableArrayToString(vc, i));
+            sprintf(message, "%s ", variableArrayToString(stId, i));
             strcat(out_message, message);
             if (strlen(out_message)>(len_mess - 1000)) break;
         }

@@ -50,7 +50,7 @@ void *lister(void *port) {
     //Bind
     while (bind(socket_desc, (struct sockaddr *) &server, sizeof (server)) < 0) {
         //print the error message
-        syslog(LOG_ERR, "Netphoto bind failed. Error awaiting %d seconds...\n",SLEEP_TIME);
+        syslog(LOG_ERR, "Netphoto bind failed. Error waiting %d seconds...\n",SLEEP_TIME);
         if (sleep(SLEEP_TIME) != 0)
             pthread_exit(0);
     }

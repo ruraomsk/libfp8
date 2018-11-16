@@ -10,6 +10,7 @@ void initSaver(char *filename, short * arrayVarNom) {
     short *t = arrayVarNom;
     filenamesaver = filename;
     countSaveBuffer = 0;
+        return;
     while (*t++ >= 0) {
         countSaveBuffer++;
     }

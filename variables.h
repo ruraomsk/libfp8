@@ -126,7 +126,8 @@ double setAsDouble(int idVar,double db);
 long long int setAsLong(int idVar,long long int ll);
 
 void initSaver(char *filename, VarSaveCtrl *varSaveCtrls,int interval);
-void updateDataSaver(void);
+void updateDataSaver (void);
+void nakeSaveDate (void);
 int readValue(int recno, Value *value);
 int writeRecord(int recno, Value *value);
 

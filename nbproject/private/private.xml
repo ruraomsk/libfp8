@@ -6,6 +6,13 @@
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/md/cpc108/libfp8/variables.h</file>
+            <file>file:/D:/md/cpc108/libfp8/jfes.h</file>
+            <file>file:/D:/md/cpc108/libfp8/jfes.c</file>
+            <file>file:/D:/md/cpc108/libfp8/variables.c</file>
+            <file>file:/D:/md/cpc108/libfp8/drvio.c</file>
+            <file>file:/D:/md/cpc108/libfp8/savervar.c</file>
+        </group>
     </open-files>
 </project-private>

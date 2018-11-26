@@ -157,7 +157,7 @@ void setValueAsFloat(char *name, double value) {
             setAsFloat(id,(float)value);
 //            syslog(LOG_ERR,"Write %s is id=%d as float =%d \n", name, id, value);
             break;
-        case float4b:
+        case float8b:
             setAsDouble(id,value);
 //            syslog(LOG_ERR,"Write %s is id=%d as double =%d \n", name, id, value);
             break;
@@ -235,6 +235,9 @@ void initSaver(char *filename, VarSaveCtrl *varSaveCtrls,int interval) {
     json_data_len=0;
     count_maker_saves=interval_makers;
 }
+static char* prefix_json="    \"\0";
+static char* dotaduble_json="\": \0";
+static char* end_prefix=",\n\0";
 void makeSaveData(){
     if(count_maker_saves-->0) return;
     count_maker_saves=interval_makers;
@@ -242,19 +245,28 @@ void makeSaveData(){
     VarSaveCtrl *vsc = sVarSaveCtrl;
     if (vsc == NULL) return;
     json_data[0]=0;
+    json_data_len=0;
+    int len1=strlen(prefix_json);
+    int len2=strlen(dotaduble_json);
+    int len3=strlen(end_prefix);
     strcat(json_data,"{\n");
+    json_data_len=strlen(json_data);
+    char *pointer=json_data+json_data_len;
     while (vsc->nameValue != NULL) {
-        strcat(json_data,"    \"");
-        strcat(json_data,vsc->nameValue);
-        strcat(json_data,"\": ");
-        strcat(json_data,variableToString(vsc->idVariable));
-        strcat(json_data,",\n");
+        int len4=strlen(vsc->nameValue);
+        memcpy(pointer,prefix_json,len1); pointer+=len1;
+        memcpy(pointer,vsc->nameValue,len4); pointer+=len4;
+        memcpy(pointer,dotaduble_json,len2); pointer+=len2;
+        char *strs=variableToString(vsc->idVariable);
+        int len5=strlen(strs); 
+        memcpy(pointer,strs,len5);pointer+=len5;
+        memcpy(pointer,end_prefix,len3); pointer+=len2;
         vsc++;
     }
+    *pointer=0;
     strcat(json_data,"}\n");
     json_data_len=strlen(json_data);
     pthread_mutex_unlock (&mutex_json);
-    printf(".");    
 }
 void updateDataSaver(){
     pthread_mutex_lock (&mutex_json);

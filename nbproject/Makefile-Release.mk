@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/UDPTrasport.o \
 	${OBJECTDIR}/cycleBuff.o \
 	${OBJECTDIR}/drvio.o \
+	${OBJECTDIR}/jfes.o \
 	${OBJECTDIR}/modbus-cpc.o \
 	${OBJECTDIR}/netphoto.o \
 	${OBJECTDIR}/savervar.o \
@@ -82,6 +83,11 @@ ${OBJECTDIR}/drvio.o: drvio.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvio.o drvio.c
+
+${OBJECTDIR}/jfes.o: jfes.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jfes.o jfes.c
 
 ${OBJECTDIR}/modbus-cpc.o: modbus-cpc.c
 	${MKDIR} -p ${OBJECTDIR}

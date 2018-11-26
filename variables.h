@@ -54,16 +54,13 @@ typedef struct __attribute__((packed)){
         double d;
     } value;
 } Convert;
+typedef struct __attribute__ ((packed)) {
+    int idVariable;
+    char *nameValue;
+} VarSaveCtrl;
 
-static char *filenamesaver;
-static short *saveIdArray;
 static Value *valueBuffer;
 static VarCtrl *varCtrlBuffer;
-static int countSaveBuffer;
-static int sizeFile;
-static FILE *saver;
-static char statusopen;
-static char needFlush=0;
 
 
 /* Функция инициализации массива структур описаний переменных 
@@ -128,7 +125,7 @@ float setAsFloat(int idVar,float fl);
 double setAsDouble(int idVar,double db);
 long long int setAsLong(int idVar,long long int ll);
 
-void initSaver(char *filename, short * arrayVarNom);
+void initSaver(char *filename, VarSaveCtrl *varSaveCtrls,int interval);
 void updateDataSaver(void);
 int readValue(int recno, Value *value);
 int writeRecord(int recno, Value *value);

@@ -50,6 +50,18 @@
       <itemPath>Makefile</itemPath>
       <itemPath>libfp8.pc</itemPath>
     </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Файлы тестов"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Важные файлы"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>libfp8.pc</itemPath>
+    </logicalFolder>
     <itemPath>99fp8</itemPath>
     <itemPath>copyfp8.bash</itemPath>
   </logicalFolder>
@@ -67,6 +79,9 @@
             <pElem>/root/linux-4.14.70</pElem>
             <pElem>D:/cpc108/include</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
         <linkerTool>
           <output>/usr/local/lib/libfp8.${CND_DLIB_EXT}</output>

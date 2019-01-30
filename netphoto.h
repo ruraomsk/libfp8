@@ -6,7 +6,7 @@
 
 /* 
  * File:   netphoto.h
- * Author: rusin
+ * Author: rusin 
  *
  * Created on 28 марта 2018 г., 15:44
  */

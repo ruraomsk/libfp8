@@ -108,6 +108,7 @@ void reciveVariables() {
         memcpy(setUp->varbufer, buffer, setUp->lenvar);
     }
 }
+
 int getNomer(){
     char hostname[120];
     gethostname(hostname,120);

@@ -167,11 +167,11 @@ void writeAllSimul(void)
         drv++;
     }
     int sended_bytes = sendto(handlerUDPSimul, IObuf, lenBufferSimul, 0, &to, &toLength);
-    if (sended_bytes != lenBufferSimul)
-    {
-        syslog(LOG_INFO, "writeAllSimul failed to send packet: return value = %d\n", sent_bytes);
-    }
-    return;
+    // if (sended_bytes != lenBufferSimul)
+    // {
+    //     syslog(LOG_INFO, "writeAllSimul failed to send packet: return value = %d\n", sended_bytes);
+    // }
+    // return;
 }
 
 int initAllDrivers(Driver *drv)

@@ -20,12 +20,14 @@
 
 
 #include "UDPTrasport.h"
+
 SetupUDP *setUp;
 unsigned char * buffer = NULL;
 int ismaster;
 int udpport = -1;
 struct sockaddr_in address;
 //char ctrl=0;
+
 int openUDPport(char *ip, int port) {
 //    printf("open udp ip=%s port=%d\n", ip, port);
     int handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);

@@ -22,10 +22,11 @@ typedef struct {
     char *varbufer;
     int lenvar;
 } SetupUDP;
+
 int initUDP(int master, int nomer, SetupUDP *setup);
 void sendVariables(void);
 void reciveVariables(void);
 int getNomer(void);
 void closeUDP(void);
-int openUDPport(char *ip, int port)
+int openUDPport(char *ip, int port);
 #endif /* UDPTRASPORT_H */

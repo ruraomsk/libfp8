@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # File:   copyfp8.bash
 # Author: rusin
 #

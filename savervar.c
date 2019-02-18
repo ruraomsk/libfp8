@@ -241,9 +241,9 @@ static char* end_prefix=",\n\0";
 void makeSaveData(){
     if(count_maker_saves-->0) return;
     count_maker_saves=interval_makers;
-    pthread_mutex_lock (&mutex_json);
     VarSaveCtrl *vsc = sVarSaveCtrl;
     if (vsc == NULL) return;
+    pthread_mutex_lock (&mutex_json);
     json_data[0]=0;
     json_data_len=0;
     int len1=strlen(prefix_json);
@@ -260,7 +260,7 @@ void makeSaveData(){
         char *strs=variableToString(vsc->idVariable);
         int len5=strlen(strs); 
         memcpy(pointer,strs,len5);pointer+=len5;
-        memcpy(pointer,end_prefix,len3); pointer+=len2;
+        memcpy(pointer,end_prefix,len3); pointer+=len3;
         vsc++;
     }
     *pointer=0;

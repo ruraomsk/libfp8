@@ -30,10 +30,10 @@ typedef struct __attribute__((packed))
 {
   sschar SIGN[16]; // Результат счета каналов 1-8  
   ssint ISP[2];
-  short Diagn;  
+  short Diagn; 
 } fds16r_data;
 
-#define FDS16R 0x04
+#define FDS16R 0x96
 #define FDS16R_SIZE sizeof(fds16r_data)
 
 void fds16r_ini(table_drv* drv);

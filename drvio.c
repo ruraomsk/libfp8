@@ -75,7 +75,7 @@ void moveShort(void *buf, short value)
 int openUDPRecive(int port) {
     int handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (handle <= 0) {
-        syslog(LOG_ERR,"openUDPport failed to create socket\n");
+        syslog(LOG_ERR,"openUDPRecive failed to create socket\n");
         return -1;
     }
     memset(&addressRecive, 0, sizeof (addressRecive));
@@ -83,7 +83,7 @@ int openUDPRecive(int port) {
         addressRecive.sin_addr.s_addr = htonl(INADDR_ANY);
         addressRecive.sin_port = htons((unsigned short) port);
         if (bind(handle, &addressRecive, sizeof (addressRecive)) < 0) {
-            syslog(LOG_ERR,"openUDPport failed to bind socket\n");
+            syslog(LOG_ERR,"openUDPRecive failed to bind socket\n");
             return -1;
         }
         int nonBlocking = 1;
@@ -97,16 +97,20 @@ int openUDPSend(char *ip, int port) {
 //    printf("open udp ip=%s port=%d\n", ip, port);
     int handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (handle <= 0) {
-        syslog(LOG_ERR,"openUDPport failed to create socket\n");
+        syslog(LOG_ERR,"openUDPSend failed to create socket\n");
         return -1;
     }
     memset(&addressSend, 0, sizeof (addressSend));
     addressSend.sin_family = AF_INET;
     addressSend.sin_port = htons((unsigned short) port);
     if (inet_aton(ip, &addressSend.sin_addr) == 0) {
-        syslog(LOG_ERR,"openUDPport failed to ip adr\n");
+        syslog(LOG_ERR,"openUDPSend failed to ip adr\n");
         return -1;
     }
+        if (connect(handle, &addressSend, sizeof (addressSend)) < 0) {
+            syslog(LOG_ERR,"openUDPSend failed to bind socket\n");
+            return -1;
+        }
     return handle;
 }
 
@@ -144,7 +148,7 @@ void readAllSimul(void)
 
     struct sockaddr_in from;
     socklen_t fromLength = sizeof(from);
-    int received_bytes = recvfrom(handlerUDPSimulRecive, IObuf, lenBufferSimul, 0, &from, &fromLength);
+    int received_bytes = recv(handlerUDPSimulRecive, IObuf, lenBufferSimul);
     if (received_bytes <= 0)
         return;
     if (received_bytes != lenBufferSimul)
@@ -177,7 +181,7 @@ void writeAllSimul(void)
         pos += drv->len_buffer;
         drv++;
     }
-    int sended_bytes = sendto(handlerUDPSimulSend, IObuf, lenBufferSimul, 0, &addressSend, &toLength);
+    int sended_bytes = send(handlerUDPSimulSend, IObuf, lenBufferSimul, 0);
 }
 
 int initAllDrivers(Driver *drv)

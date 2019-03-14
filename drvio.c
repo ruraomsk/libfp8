@@ -82,7 +82,7 @@ int openUDPRecive(int port) {
     addressRecive.sin_family = AF_INET;
         addressRecive.sin_addr.s_addr = htonl(INADDR_ANY);
         addressRecive.sin_port = htons((unsigned short) port);
-        if (bind(handle, &addressRecive, sizeof (address)) < 0) {
+        if (bind(handle, &addressRecive, sizeof (addressRecive)) < 0) {
             syslog(LOG_ERR,"openUDPport failed to bind socket\n");
             return -1;
         }
@@ -100,7 +100,7 @@ int openUDPSend(char *ip, int port) {
         syslog(LOG_ERR,"openUDPport failed to create socket\n");
         return -1;
     }
-    memset(&addressSend, 0, sizeof (address));
+    memset(&addressSend, 0, sizeof (addressSend));
     addressSend.sin_family = AF_INET;
     addressSend.sin_port = htons((unsigned short) port);
     if (inet_aton(ip, &addressSend.sin_addr) == 0) {
@@ -164,7 +164,7 @@ void readAllSimul(void)
 
 void writeAllSimul(void)
 {
-    socklen_t toLength = sizeof(to);
+    socklen_t toLength = sizeof(addressSend);
 
     moveUserToDriver();
     Driver *drv = drv_ptr;

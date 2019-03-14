@@ -51,7 +51,11 @@ static char NeedReInit;
 #define READ_ALL 1
 #define WRITE_ALL 2
 #define REINIT_X80 3
-static int handlerUDPSimul;
+static int handlerUDPSimulSend;
+static int handlerUDPSimulRecive;
+static struct sockaddr_in addressRecive;
+static struct sockaddr_in addressSend;
+
 void iniBufDrivers()
 {
     Driver *drv = drv_ptr;
@@ -68,14 +72,47 @@ void moveShort(void *buf, short value)
     short *sh = (short *)buf;
     *sh = value;
 }
+int openUDPRecive(int port) {
+    int handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if (handle <= 0) {
+        syslog(LOG_ERR,"openUDPport failed to create socket\n");
+        return -1;
+    }
+    memset(&addressRecive, 0, sizeof (addressRecive));
+    addressRecive.sin_family = AF_INET;
+        addressRecive.sin_addr.s_addr = htonl(INADDR_ANY);
+        addressRecive.sin_port = htons((unsigned short) port);
+        if (bind(handle, &addressRecive, sizeof (address)) < 0) {
+            syslog(LOG_ERR,"openUDPport failed to bind socket\n");
+            return -1;
+        }
+        int nonBlocking = 1;
+        if (fcntl(handle, F_SETFL, O_NONBLOCK, nonBlocking) == -1) {
+            syslog(LOG_ERR,"openUDPRecive failed to set non-blocking socket\n");
+            return -1;
+        }
+        return handle;
+}
+int openUDPSend(char *ip, int port) {
+//    printf("open udp ip=%s port=%d\n", ip, port);
+    int handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if (handle <= 0) {
+        syslog(LOG_ERR,"openUDPport failed to create socket\n");
+        return -1;
+    }
+    memset(&addressSend, 0, sizeof (address));
+    addressSend.sin_family = AF_INET;
+    addressSend.sin_port = htons((unsigned short) port);
+    if (inet_aton(ip, &addressSend.sin_addr) == 0) {
+        syslog(LOG_ERR,"openUDPport failed to ip adr\n");
+        return -1;
+    }
+    return handle;
+}
 
 int initAllSimul(short CodeSub, Driver *drv, char *SimulIP, int SimulPort)
 {
-    struct sockaddr_in serv_addr;
     drv_ptr = drv;
-    char buffer[2048];
-    // moveShort(buffer, CodeSub);
-    // int pos = 0;
     int len = 0;
     while (drv->code_driver != 0)
     {
@@ -83,28 +120,11 @@ int initAllSimul(short CodeSub, Driver *drv, char *SimulIP, int SimulPort)
         drv++;
     }
     lenBufferSimul = len;
-    // if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-    //     syslog(LOG_ERR,"\n Error : Could not create socket \n");
-    //     return 1;
-    // }
-    // serv_addr.sin_family = AF_INET;
-    // serv_addr.sin_port = htons(SimulPort);
-    // if (inet_pton(AF_INET, SimulIP, &serv_addr.sin_addr) <= 0) {
-    //     syslog(LOG_ERR,"\n inet_pton error occured\n");
-    //     return 1;
-    // }
-    // if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof (serv_addr)) < 0) {
-    //     syslog(LOG_ERR,"\n Error : Connect Failed \n");
-    //     return 1;
-    // }
-    // if (send(sockfd, buffer, pos, 0) < 0) {
-    //     syslog(LOG_ERR,"\n Error : Failed Send Init\n");
-    //     return 1;
-    // }
-    handlerUDPSimul = openUDPport(SimulIP, SimulPort + CodeSub);
-    if (handlerUDPSimul < 0)
+    handlerUDPSimulRecive = openUDPRecive(SimulPort);
+    handlerUDPSimulSend=openUDPSend(SimulIP,SimulPort+CodeSub);
+    if ((handlerUDPSimulRecive < 0) ||(handlerUDPSimulSend < 0) )
     {
-        syslog(LOG_ERR, "\n Error : Not binding Simul port\n");
+        syslog(LOG_ERR, "\n Error : Not binding Simul ports\n");
         return 1;
     }
     IObuf = malloc(lenBufferSimul);
@@ -122,17 +142,9 @@ void readAllSimul(void)
     Driver *drv = drv_ptr;
     int pos = 0, len = 0;
 
-    // while (drv->code_driver != 0) {
-    //         //    table_drv *table = drv->table;
-    //         //    memcpy(IObuf+pos,table->data, drv->len_buffer);
-    //         //    pos+=drv->len_buffer;
-    //     len += drv->len_buffer;
-    //     drv++;
-    // }
-    //    if(send(sockfd,IObuf,len,0)!=len) return;
     struct sockaddr_in from;
     socklen_t fromLength = sizeof(from);
-    int received_bytes = recvfrom(handlerUDPSimul, IObuf, lenBufferSimul, 0, &from, &fromLength);
+    int received_bytes = recvfrom(handlerUDPSimulRecive, IObuf, lenBufferSimul, 0, &from, &fromLength);
     if (received_bytes <= 0)
         return;
     if (received_bytes != lenBufferSimul)
@@ -152,7 +164,6 @@ void readAllSimul(void)
 
 void writeAllSimul(void)
 {
-    struct sockaddr_in to;
     socklen_t toLength = sizeof(to);
 
     moveUserToDriver();
@@ -166,12 +177,7 @@ void writeAllSimul(void)
         pos += drv->len_buffer;
         drv++;
     }
-    int sended_bytes = sendto(handlerUDPSimul, IObuf, lenBufferSimul, 0, &to, &toLength);
-    // if (sended_bytes != lenBufferSimul)
-    // {
-    //     syslog(LOG_INFO, "writeAllSimul failed to send packet: return value = %d\n", sended_bytes);
-    // }
-    // return;
+    int sended_bytes = sendto(handlerUDPSimulSend, IObuf, lenBufferSimul, 0, &addressSend, &toLength);
 }
 
 int initAllDrivers(Driver *drv)

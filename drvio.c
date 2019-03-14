@@ -148,7 +148,7 @@ void readAllSimul(void)
 
     struct sockaddr_in from;
     socklen_t fromLength = sizeof(from);
-    int received_bytes = recv(handlerUDPSimulRecive, IObuf, lenBufferSimul);
+    int received_bytes = recv(handlerUDPSimulRecive, IObuf, lenBufferSimul,0);
     if (received_bytes <= 0)
         return;
     if (received_bytes != lenBufferSimul)

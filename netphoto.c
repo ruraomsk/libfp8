@@ -66,7 +66,7 @@ void *lister(void *port) {
     syslog(LOG_INFO, "Netphoto waiting for incoming connections:%d...\n", port_listen);
     c = sizeof (struct sockaddr_in);
     while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t*) & c))) {
-        new_sock = malloc(4);
+        new_sock = malloc(sizeof(client_sock));
         *new_sock = client_sock;
         connection_handler(new_sock);
     }

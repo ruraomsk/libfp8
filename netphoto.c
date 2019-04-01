@@ -66,20 +66,9 @@ void *lister(void *port) {
     syslog(LOG_INFO, "Netphoto waiting for incoming connections:%d...\n", port_listen);
     c = sizeof (struct sockaddr_in);
     while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t*) & c))) {
-        //        printf("is incoming connections:%d...\n", client_sock);
-
-        //        pthread_t sniffer_thread;
-        new_sock = malloc(1);
+        new_sock = malloc(4);
         *new_sock = client_sock;
         connection_handler(new_sock);
-        //        if (pthread_create(&sniffer_thread, NULL, connection_handler, (void*) new_sock) < 0) {
-        //            printf("could not create thread \n");
-        //            pthread_exit(0);
-        //        }
-
-        //Now join the thread , so that we dont terminate before the thread
-        //pthread_join( sniffer_thread , NULL);
-        //        puts("Handler assigned");
     }
 
     if (client_sock < 0) {
@@ -119,21 +108,28 @@ void connection_handler(int *socket_desc) {
         sscanf(client_message, " %d %d", &stId, &endId);
         out_message = malloc(len_mess);
         if (out_message == NULL) {
-            syslog(LOG_ERR, "Netphoto no allocated memoty \n");
+            syslog(LOG_ERR, "Netphoto no allocated memory \n");
             close(sock);
             free(socket_desc);
             return;
             //            pthread_exit(0);
         }
         strcpy(out_message, "<vals>\n");
+        char *pos=out_message+strlen(out_message);
         if ((endId >= stId) && (stId > 0) && (endId > 0)) {
             for (int i = stId; i <= endId; i++) {
                 VarCtrl *vc = findVariable(i);
                 if (vc == NULL) continue;
                 if (vc->size > 1) continue;
                 sprintf(message, "<val id=\"%d\" value=\"%s\"/>\n", i, variableToString(i));
-                strcat(out_message, message);
-                if (strlen(out_message)>(len_mess - 1000)) break;
+//                strcat(out_message, message);
+                int i;
+                char *tpos=message;
+                while(*tpos!=0){
+                    *pos++ =*tpos++;
+                }
+                *pos++=0;
+                if ((pos-out_message)>(len_mess - 1000)) break;
             }
             strcat(out_message, "</vals>\n");
         }
@@ -160,7 +156,7 @@ void connection_handler(int *socket_desc) {
         sscanf(client_message, " %d %d", &stId, &lenId);
         out_message = malloc(len_mess);
         if (out_message == NULL) {
-            syslog(LOG_ERR, "Netphoto no allocated memoty \n");
+            syslog(LOG_ERR, "Netphoto no allocated memory \n");
             close(sock);
             free(socket_desc);
             return;

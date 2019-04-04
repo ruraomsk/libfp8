@@ -50,7 +50,7 @@ void *lister(void *port) {
     //Bind
     while (bind(socket_desc, (struct sockaddr *) &server, sizeof (server)) < 0) {
         //print the error message
-        syslog(LOG_ERR, "Netphoto bind failed. Error waiting %d seconds...\n",SLEEP_TIME);
+        syslog(LOG_ERR, "Netphoto bind failed. Error waiting %d seconds...\n", SLEEP_TIME);
         if (sleep(SLEEP_TIME) != 0)
             pthread_exit(0);
     }
@@ -66,7 +66,7 @@ void *lister(void *port) {
     syslog(LOG_INFO, "Netphoto waiting for incoming connections:%d...\n", port_listen);
     c = sizeof (struct sockaddr_in);
     while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t*) & c))) {
-        new_sock = malloc(sizeof(client_sock));
+        new_sock = malloc(sizeof (client_sock));
         *new_sock = client_sock;
         connection_handler(new_sock);
     }
@@ -84,7 +84,7 @@ void connection_handler(int *socket_desc) {
     int sock = *socket_desc;
     int read_size;
     char message[120], client_message[200], *out_message;
-    #define len_mess 128000
+#define len_mess 128000
     //    while (1) {
     memset(client_message, 0, 200);
     read_size = recv(sock, client_message, 199, 0);
@@ -115,21 +115,20 @@ void connection_handler(int *socket_desc) {
             //            pthread_exit(0);
         }
         strcpy(out_message, "<vals>\n");
-        char *pos=out_message+strlen(out_message);
+        char *pos = out_message + strlen(out_message);
         if ((endId >= stId) && (stId > 0) && (endId > 0)) {
             for (int i = stId; i <= endId; i++) {
                 VarCtrl *vc = findVariable(i);
                 if (vc == NULL) continue;
                 if (vc->size > 1) continue;
                 sprintf(message, "<val id=\"%d\" value=\"%s\"/>\n", i, variableToString(i));
-//                strcat(out_message, message);
-                int i;
-                char *tpos=message;
-                while(*tpos!=0){
-                    *pos++ =*tpos++;
+                //                strcat(out_message, message);
+                char *tpos = message;
+                while (*tpos != 0) {
+                    *pos++ = *tpos++;
                 }
-                *pos++=0;
-                if ((pos-out_message)>(len_mess - 1000)) break;
+                *pos = 0;
+                if ((pos - out_message)>(len_mess - 1000)) break;
             }
             strcat(out_message, "</vals>\n");
         }

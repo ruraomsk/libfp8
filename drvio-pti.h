@@ -1,12 +1,19 @@
 #ifndef DRVIO_H
 #define DRVIO_H
 
-#include "UDPTrasport.h"
-#define FDS16R 0x04
-#define VDS32R 0xC2
-#define VAS84R 0xC6
 
-#define NAME_DRIVER "/dev/dspa_0"
+//#define FDS16R 0x04
+//#define VDS32R 0xC2
+//#define VAS84R 0xC6
+
+//#define NAME_DRIVER "/dev/dspa_0"
+
+typedef struct __attribute__ ((packed)) {
+    unsigned char code_driver;
+    unsigned char address;
+    unsigned short len_buffer;
+}
+def_dev;
 
 typedef struct __attribute__ ((packed)) {
     unsigned short codedrv;
@@ -35,15 +42,11 @@ typedef struct __attribute__ ((packed)) {
 }
 Driver;
 
-void iniBufDrivers();
-void moveShort(void *buf, short value);
-int openUDPRecive(int port);
-int openUDPSend(char *ip, int port);
-void moveUserToDriver();
-void moveDriverToUser();
-void printDriver();
+int initAllDriversPTI(Driver *drv);
+void readAllDriversPTI(void);
+void writeAllDriversPTI(void);
 
-static char flag_ini = 0;
+static char flag_ini=0;
 
 typedef struct __attribute__ ((packed)) {
     int type;
@@ -52,6 +55,9 @@ typedef struct __attribute__ ((packed)) {
     void (*step2)(table_drv*);
 }
 type_drivers;
+//#pragma pop
+
+//#pragma pack(push, 1)
+
 
 #endif /* DRVIO_H */
-

@@ -35,9 +35,18 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Simul.o \
 	${OBJECTDIR}/UDPTrasport.o \
 	${OBJECTDIR}/cycleBuff.o \
+	${OBJECTDIR}/drivers/DoVds.o \
+	${OBJECTDIR}/drivers/ai12_vas.o \
+	${OBJECTDIR}/drivers/ao16.o \
+	${OBJECTDIR}/drivers/do32_pti.o \
+	${OBJECTDIR}/drivers/emul8enc.o \
+	${OBJECTDIR}/drivers/vds32_pti.o \
+	${OBJECTDIR}/drvio-pti.o \
 	${OBJECTDIR}/drvio.o \
+	${OBJECTDIR}/drvioFP.o \
 	${OBJECTDIR}/jfes.o \
 	${OBJECTDIR}/modbus-cpc.o \
 	${OBJECTDIR}/netphoto.o \
@@ -69,6 +78,11 @@ LDLIBSOPTIONS=
 	${MKDIR} -p /usr/local/lib
 	${LINK.c} -o /usr/local/lib/libfp8.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
+${OBJECTDIR}/Simul.o: Simul.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Simul.o Simul.c
+
 ${OBJECTDIR}/UDPTrasport.o: UDPTrasport.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -79,10 +93,50 @@ ${OBJECTDIR}/cycleBuff.o: cycleBuff.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cycleBuff.o cycleBuff.c
 
+${OBJECTDIR}/drivers/DoVds.o: drivers/DoVds.c
+	${MKDIR} -p ${OBJECTDIR}/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/DoVds.o drivers/DoVds.c
+
+${OBJECTDIR}/drivers/ai12_vas.o: drivers/ai12_vas.c
+	${MKDIR} -p ${OBJECTDIR}/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/ai12_vas.o drivers/ai12_vas.c
+
+${OBJECTDIR}/drivers/ao16.o: drivers/ao16.c
+	${MKDIR} -p ${OBJECTDIR}/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/ao16.o drivers/ao16.c
+
+${OBJECTDIR}/drivers/do32_pti.o: drivers/do32_pti.c
+	${MKDIR} -p ${OBJECTDIR}/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/do32_pti.o drivers/do32_pti.c
+
+${OBJECTDIR}/drivers/emul8enc.o: drivers/emul8enc.c
+	${MKDIR} -p ${OBJECTDIR}/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/emul8enc.o drivers/emul8enc.c
+
+${OBJECTDIR}/drivers/vds32_pti.o: drivers/vds32_pti.c
+	${MKDIR} -p ${OBJECTDIR}/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/vds32_pti.o drivers/vds32_pti.c
+
+${OBJECTDIR}/drvio-pti.o: drvio-pti.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvio-pti.o drvio-pti.c
+
 ${OBJECTDIR}/drvio.o: drvio.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvio.o drvio.c
+
+${OBJECTDIR}/drvioFP.o: drvioFP.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvioFP.o drvioFP.c
 
 ${OBJECTDIR}/jfes.o: jfes.c
 	${MKDIR} -p ${OBJECTDIR}

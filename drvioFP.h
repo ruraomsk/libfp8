@@ -35,14 +35,10 @@ typedef struct __attribute__ ((packed)) {
 }
 Driver;
 
-void iniBufDrivers();
-void moveShort(void *buf, short value);
-int openUDPRecive(int port);
-int openUDPSend(char *ip, int port);
-void moveUserToDriver();
-void moveDriverToUser();
-void printDriver();
-
+int initAllDrivers(Driver *drv);
+int readAllDrivers(void);
+int writeAllDrivers(void);
+int isSlave(void);
 static char flag_ini = 0;
 
 typedef struct __attribute__ ((packed)) {

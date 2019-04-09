@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 #include <stdlib.h>
 #include <stdio.h>
 #include <syslog.h>
@@ -12,13 +7,51 @@
 #include <sys/io.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <sys/reboot.h>
 
-#include "variables.h"
-#include "drvio.h"
 #include "variables.h"
 #include "modbus-cpc.h"
+#include "drvio.h"
 
-#include <sys/reboot.h>
+#include <fp8/drivers/ao16.h>
+#include <fp8/drivers/do32_pti.h>
+#include <fp8/drivers/vds32_pti.h>
+#include <fp8/drivers/emul8enc.h>
+#include <fp8/drivers/DoVds.h>
+#include <fp8/drivers/ai12_vas.h>
+
+static type_drivers tab_tp[] = {
+    { AO16_PTI,
+        &ao16_ini,
+        NULL,
+        &ao16_dw,},
+
+    { VDS32_PTI,
+        &vds32pti_ini,
+        &vds32pti_dr,
+        NULL,},
+
+    { AI12_VAS_PTI,
+        &AI12vas_ini,
+        &AI12vas_dr,
+        NULL,},
+
+    { DO32_PTI,
+        &do32_ini,
+        NULL,
+        &do32_dw,},
+    { EM8ENC_PTI,
+        &em8encpti_ini,
+        NULL,
+        &em8enc_dw,},
+    { DOVDS,
+        &dovds_ini,
+        NULL,
+        &dovds_dw,},
+    {-1, NULL, NULL, NULL},
+};
+
+
 
 static union {
     __off_t ppos;
@@ -26,20 +59,9 @@ static union {
 } tfd;
 
 void *IObuf;
-
 static int dfd; // Для работы с драйверами ввода/вывода
-static char imp_drv[] = {
-    FDS16R,
-    VDS32R,
-    VAS84R,
-    0,
-};
-#define MANE_DRIVER "/dev/dspa_0"
 static Driver *drv_ptr;
 static char NeedReInit;
-#define READ_ALL 1
-#define WRITE_ALL 2
-#define REINIT_X80 3
 static struct sockaddr_in addressRecive;
 static struct sockaddr_in addressSend;
 
@@ -49,6 +71,45 @@ void iniBufDrivers() {
         table_drv *table = drv->table;
         memset(table->data, 0xff, drv->len_buffer);
         drv++;
+    }
+}
+
+void call_ini(table_drv *table) {
+    int i = 0;
+    while (tab_tp[i].type > 0) {
+        if (tab_tp[i].type == table->codedrv) {
+            void (*ptr)(table_drv *) = NULL;
+            ptr = tab_tp[i].init;
+            ptr(table);
+            return;
+        }
+        i++;
+    }
+}
+
+void call_read(table_drv *table) {
+    int i = 0;
+    while (tab_tp[i].type > 0) {
+        if (tab_tp[i].type == table->codedrv) {
+            void (*ptr)(table_drv *) = NULL;
+            ptr = tab_tp[i].step1;
+            if (ptr != NULL) ptr(table);
+            return;
+        }
+        i++;
+    }
+}
+
+void call_write(table_drv *table) {
+    int i = 0;
+    while (tab_tp[i].type > 0) {
+        if (tab_tp[i].type == table->codedrv) {
+            void (*ptr)(table_drv *) = NULL;
+            ptr = tab_tp[i].step2;
+            if (ptr != NULL) ptr(table);
+            return;
+        }
+        i++;
     }
 }
 
@@ -98,6 +159,23 @@ int openUDPSend(char *ip, int port) {
         return -1;
     }
     return handle;
+}
+
+
+int initAllDriversPTI(Driver *drv) {
+    drv_ptr = drv;
+    iniBufDrivers();
+    ioperm(0x100, 0x80, 1);
+    ioperm(0x200, 0x80, 1);
+    ioperm(0x300, 0x80, 1);
+    while (drv->code_driver != 0) {
+        table_drv *table = drv->table;
+        table->address = drv->address;
+        table->codedrv = drv->code_driver;
+        call_ini(table);
+        drv++;
+    }
+    return 0;
 }
 
 int initAllDrivers(Driver *drv) {
@@ -226,6 +304,18 @@ void WakeUpDriver() {
     }
 }
 
+int readAllDriversPTI(void) {
+    moveUserToDriver();
+    Driver *drv = drv_ptr;
+    while (drv->code_driver != 0) {
+        table_drv *table = drv->table;
+        call_read(table);
+        drv++;
+    }
+    moveDriverToUser();
+    return 0;
+}
+
 int readAllDrivers(void) {
     unsigned long int t;
     short ret_error[256];
@@ -252,6 +342,18 @@ int isSlave() {
     return pread(dfd, &t, 1, 0);
 }
 
+int writeAllDriversPTI(void) {
+    moveUserToDriver();
+    Driver *drv = drv_ptr;
+    while (drv->code_driver != 0) {
+        table_drv *table = drv->table;
+        call_write(table);
+        drv++;
+    }
+    moveDriverToUser();
+    return 0;
+}
+
 int writeAllDrivers(void) {
     unsigned long int t;
     short ret_error[256];
@@ -262,7 +364,6 @@ int writeAllDrivers(void) {
     }
     pread(dfd, ret_error, 2, 0);
     setErrorDriver(ret_error);
-    //    printDriver();
     moveDriverToUser();
     return 0;
 }

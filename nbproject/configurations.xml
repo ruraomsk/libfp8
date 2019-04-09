@@ -5,10 +5,22 @@
                    displayName="Исходные файлы"
                    projectFiles="true">
       <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
+        <itemPath>drivers/DoVds.c</itemPath>
+        <itemPath>drivers/DoVds.h</itemPath>
+        <itemPath>drivers/ai12_vas.c</itemPath>
+        <itemPath>drivers/ai12_vas.h</itemPath>
+        <itemPath>drivers/ao16.c</itemPath>
+        <itemPath>drivers/ao16.h</itemPath>
+        <itemPath>drivers/do32_pti.c</itemPath>
+        <itemPath>drivers/do32_pti.h</itemPath>
+        <itemPath>drivers/emul8enc.c</itemPath>
+        <itemPath>drivers/emul8enc.h</itemPath>
         <itemPath>drivers/fds16r.h</itemPath>
         <itemPath>drivers/sbkfp7.h</itemPath>
         <itemPath>drivers/vas84r.h</itemPath>
         <itemPath>drivers/vchs2.h</itemPath>
+        <itemPath>drivers/vds32_pti.c</itemPath>
+        <itemPath>drivers/vds32_pti.h</itemPath>
         <itemPath>drivers/vds32r.h</itemPath>
         <itemPath>drivers/vencf8l.h</itemPath>
       </logicalFolder>
@@ -102,6 +114,26 @@
       </item>
       <item path="cycleBuff.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="drivers/DoVds.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/DoVds.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/ai12_vas.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/ai12_vas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/ao16.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/ao16.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/do32_pti.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/do32_pti.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/emul8enc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/emul8enc.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="drivers/fds16r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/sbkfp7.h" ex="false" tool="3" flavor2="0">
@@ -109,6 +141,10 @@
       <item path="drivers/vas84r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/vchs2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/vds32_pti.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/vds32_pti.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/vds32r.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -180,6 +216,26 @@
       </item>
       <item path="cycleBuff.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="drivers/DoVds.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/DoVds.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/ai12_vas.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/ai12_vas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/ao16.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/ao16.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/do32_pti.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/do32_pti.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/emul8enc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/emul8enc.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="drivers/fds16r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/sbkfp7.h" ex="false" tool="3" flavor2="0">
@@ -187,6 +243,10 @@
       <item path="drivers/vas84r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/vchs2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="drivers/vds32_pti.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="drivers/vds32_pti.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/vds32r.h" ex="false" tool="3" flavor2="0">
       </item>

@@ -13,12 +13,12 @@
 #include "modbus-cpc.h"
 #include "drvio.h"
 
-#include <fp8/drivers/ao16.h>
-#include <fp8/drivers/do32_pti.h>
-#include <fp8/drivers/vds32_pti.h>
-#include <fp8/drivers/emul8enc.h>
-#include <fp8/drivers/DoVds.h>
-#include <fp8/drivers/ai12_vas.h>
+#include "drivers/ao16.h"
+#include "drivers/do32_pti.h"
+#include "drivers/vds32_pti.h"
+#include "drivers/emul8enc.h"
+#include "drivers/DoVds.h"
+#include "drivers/ai12_vas.h"
 
 static type_drivers tab_tp[] = {
     { AO16_PTI,

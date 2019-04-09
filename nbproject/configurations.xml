@@ -5,37 +5,19 @@
                    displayName="Исходные файлы"
                    projectFiles="true">
       <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
-        <itemPath>drivers/DoVds.c</itemPath>
-        <itemPath>drivers/DoVds.h</itemPath>
-        <itemPath>drivers/ai12_vas.c</itemPath>
-        <itemPath>drivers/ai12_vas.h</itemPath>
-        <itemPath>drivers/ao16.c</itemPath>
-        <itemPath>drivers/ao16.h</itemPath>
-        <itemPath>drivers/do32_pti.c</itemPath>
-        <itemPath>drivers/do32_pti.h</itemPath>
-        <itemPath>drivers/emul8enc.c</itemPath>
-        <itemPath>drivers/emul8enc.h</itemPath>
         <itemPath>drivers/fds16r.h</itemPath>
         <itemPath>drivers/sbkfp7.h</itemPath>
         <itemPath>drivers/vas84r.h</itemPath>
         <itemPath>drivers/vchs2.h</itemPath>
-        <itemPath>drivers/vds32_pti.c</itemPath>
-        <itemPath>drivers/vds32_pti.h</itemPath>
         <itemPath>drivers/vds32r.h</itemPath>
         <itemPath>drivers/vencf8l.h</itemPath>
       </logicalFolder>
-      <itemPath>Simul.c</itemPath>
-      <itemPath>Simul.h</itemPath>
       <itemPath>UDPTrasport.c</itemPath>
       <itemPath>UDPTrasport.h</itemPath>
       <itemPath>cycleBuff.c</itemPath>
       <itemPath>cycleBuff.h</itemPath>
-      <itemPath>drvio-pti.c</itemPath>
-      <itemPath>drvio-pti.h</itemPath>
       <itemPath>drvio.c</itemPath>
       <itemPath>drvio.h</itemPath>
-      <itemPath>drvioFP.c</itemPath>
-      <itemPath>drvioFP.h</itemPath>
       <itemPath>jfes.c</itemPath>
       <itemPath>jfes.h</itemPath>
       <itemPath>misparw.h</itemPath>
@@ -110,10 +92,6 @@
       </compileType>
       <item path="99fp8" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Simul.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Simul.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="UDPTrasport.h" ex="false" tool="3" flavor2="0">
@@ -124,26 +102,6 @@
       </item>
       <item path="cycleBuff.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drivers/DoVds.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/DoVds.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/ai12_vas.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/ai12_vas.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/ao16.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/ao16.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/do32_pti.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/do32_pti.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/emul8enc.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/emul8enc.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="drivers/fds16r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/sbkfp7.h" ex="false" tool="3" flavor2="0">
@@ -152,25 +110,13 @@
       </item>
       <item path="drivers/vchs2.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drivers/vds32_pti.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/vds32_pti.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="drivers/vds32r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/vencf8l.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drvio-pti.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drvio-pti.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="drvio.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="drvio.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drvioFP.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drvioFP.h" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="SourceFiles">
         <cTool>
@@ -224,10 +170,6 @@
       </compileType>
       <item path="99fp8" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Simul.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Simul.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="UDPTrasport.h" ex="false" tool="3" flavor2="0">
@@ -238,26 +180,6 @@
       </item>
       <item path="cycleBuff.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drivers/DoVds.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/DoVds.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/ai12_vas.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/ai12_vas.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/ao16.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/ao16.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/do32_pti.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/do32_pti.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drivers/emul8enc.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/emul8enc.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="drivers/fds16r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/sbkfp7.h" ex="false" tool="3" flavor2="0">
@@ -266,25 +188,13 @@
       </item>
       <item path="drivers/vchs2.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drivers/vds32_pti.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drivers/vds32_pti.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="drivers/vds32r.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="drivers/vencf8l.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="drvio-pti.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drvio-pti.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="drvio.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="drvio.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="drvioFP.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="drvioFP.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="jfes.c" ex="false" tool="0" flavor2="0">
       </item>

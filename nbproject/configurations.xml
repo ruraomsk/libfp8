@@ -24,6 +24,8 @@
         <itemPath>drivers/vds32r.h</itemPath>
         <itemPath>drivers/vencf8l.h</itemPath>
       </logicalFolder>
+      <itemPath>Simul.c</itemPath>
+      <itemPath>Simul.h</itemPath>
       <itemPath>UDPTrasport.c</itemPath>
       <itemPath>UDPTrasport.h</itemPath>
       <itemPath>cycleBuff.c</itemPath>
@@ -103,6 +105,10 @@
         </linkerTool>
       </compileType>
       <item path="99fp8" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Simul.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Simul.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -205,6 +211,10 @@
         </asmTool>
       </compileType>
       <item path="99fp8" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Simul.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Simul.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
       </item>

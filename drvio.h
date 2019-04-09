@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   drio.h
- * Author: rusin
- *
- * Created on 16 марта 2018 г., 10:56
- */
-
 #ifndef DRVIO_H
 #define DRVIO_H
 
@@ -21,30 +8,39 @@
 
 #define NAME_DRIVER "/dev/dspa_0"
 
+typedef struct __attribute__ ((packed)) {
+    unsigned char code_driver;
+    unsigned char address;
+    unsigned short len_buffer;
+}
+def_dev;
 
-typedef struct __attribute__((packed)){
+typedef struct __attribute__ ((packed)) {
     unsigned short codedrv;
     unsigned short address;
     void *inimod;
     void *data;
     unsigned long int time;
     short error;
-} table_drv;
+}
+table_drv;
 
-typedef struct __attribute__((packed)){
+typedef struct __attribute__ ((packed)) {
     void *value;
     char format;
     short address;
-} DriverRegister;
+}
+DriverRegister;
 
-typedef struct __attribute__((packed)){
+typedef struct __attribute__ ((packed)) {
     unsigned short code_driver;
     unsigned short address;
     short len_init;
     short len_buffer;
     DriverRegister *def_buffer;
     table_drv *table;
-} Driver;
+}
+Driver;
 
 int initAllDrivers(Driver *drv);
 int readAllDrivers(void);
@@ -52,8 +48,8 @@ int writeAllDrivers(void);
 void readAllSimul(void);
 void writeAllSimul(void);
 int isSlave(void);
-int initAllSimul(short CodeSub,Driver *drv,char *SimulIP,int SimulPort);
-static char flag_ini=0;
+int initAllSimul(short CodeSub, Driver *drv, char *SimulIP, int SimulPort);
+static char flag_ini = 0;
 
 typedef struct __attribute__ ((packed)) {
     int type;
@@ -64,4 +60,3 @@ typedef struct __attribute__ ((packed)) {
 type_drivers;
 
 #endif /* DRVIO_H */
-

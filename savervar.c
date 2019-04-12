@@ -212,6 +212,8 @@ int loadVariablesFromJSON(char *fileName) {
     }
     free(json_data);
 }
+
+
 void initSaver(char *filename, VarSaveCtrl *varSaveCtrls,int interval) {
     filenamesaver = filename;
     sVarSaveCtrl = varSaveCtrls;
@@ -235,9 +237,12 @@ void initSaver(char *filename, VarSaveCtrl *varSaveCtrls,int interval) {
     json_data_len=0;
     count_maker_saves=interval_makers;
 }
+
+
 static char* prefix_json="    \"\0";
 static char* dotaduble_json="\": \0";
 static char* end_prefix=",\n\0";
+
 void makeSaveData(){
     if(count_maker_saves-->0) return;
     count_maker_saves=interval_makers;
@@ -268,6 +273,7 @@ void makeSaveData(){
     json_data_len=strlen(json_data);
     pthread_mutex_unlock (&mutex_json);
 }
+
 void updateDataSaver(){
     pthread_mutex_lock (&mutex_json);
     int tmp_len=json_data_len;
@@ -275,6 +281,7 @@ void updateDataSaver(){
     pthread_mutex_unlock (&mutex_json);
     set_file_content(filenamesaver,json_data_file,tmp_len);
 }
+
 void closeSaver(){
     free(json_data);
     free(json_data_file);

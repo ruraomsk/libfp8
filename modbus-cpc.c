@@ -106,11 +106,8 @@ void *Reconnect(void *args) {
     while (1) {
         if (!work)
             pthread_exit(0);
-        //        printf("Start reconect...\n");
-        if (sleep(RECONECT_TIME) != 0)
+        if (sleep(RECONNECT_TIME) != 0)
             pthread_exit(0);
-        //        printf("Continue reconect...\n");
-        //        continue;
         updateDataSaver();
         if (driversRun)
             WakeUpDriver();
@@ -118,7 +115,7 @@ void *Reconnect(void *args) {
         while (md->port >= 0) {
             if (md->typeDevice == 1) {
                 if (md->context->ctx1 == NULL) {
-                    syslog(LOG_INFO, "Reconect %s \n", md->ip1);
+                    syslog(LOG_INFO, "Reconnect %s \n", md->ip1);
                     ctx = modbus_new_tcp(md->ip1, md->port);
                     if (modbus_connect(ctx) == -1) {
                         syslog(LOG_ERR, "Master Connection failed on ip=%s error %s\n", md->ip1, modbus_strerror(errno));
@@ -128,11 +125,11 @@ void *Reconnect(void *args) {
                         pthread_mutex_lock(&mutex);
                         md->context->ctx1 = ctx;
                         pthread_mutex_unlock(&mutex);
-                        syslog(LOG_INFO, "Reconect Sucsess!\n");
+                        syslog(LOG_INFO, "Reconnect Sucsess!\n");
                     }
                 }
                 if (md->context->ctx2 == NULL) {
-                    syslog(LOG_INFO, "Reconect %s \n", md->ip2);
+                    syslog(LOG_INFO, "Reconnect %s \n", md->ip2);
                     ctx = modbus_new_tcp(md->ip2, md->port);
                     if (modbus_connect(ctx) == -1) {
                         syslog(LOG_ERR, "Master Connection failed on ip=%s error %s\n", md->ip2, modbus_strerror(errno));
@@ -142,7 +139,7 @@ void *Reconnect(void *args) {
                         pthread_mutex_lock(&mutex);
                         md->context->ctx2 = ctx;
                         pthread_mutex_unlock(&mutex);
-                        syslog(LOG_INFO, "Reconect Sucsess!\n");
+                        syslog(LOG_INFO, "Reconnect Sucsess!\n");
                     }
                 }
             }
@@ -155,11 +152,8 @@ void *OnlySaveVariable(void *args) {
     while (1) {
         if (!work)
             pthread_exit(0);
-        //        printf("Start reconect...\n");
-        if (sleep(RECONECT_TIME) != 0)
+        if (sleep(RECONNECT_TIME) != 0)
             pthread_exit(0);
-        //        printf("Continue reconect...\n");
-        //        continue;
         updateDataSaver();
         if (driversRun)
             WakeUpDriver();

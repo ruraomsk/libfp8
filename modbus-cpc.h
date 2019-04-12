@@ -16,7 +16,7 @@
 #include <modbus/modbus.h>
 #include <sys/time.h>
 #define NB_CONNECTION    20
-#define RECONECT_TIME    5
+#define RECONNECT_TIME    5
 
 typedef struct __attribute__((packed)){
     int port;

@@ -63,6 +63,10 @@ int readAllDrivers(void);
 int isSlave();
 int writeAllDriversPTI(void);
 int writeAllDrivers(void);
+void readAllSimul(void);
+void writeAllSimul(void);
+int initAllSimul(short CodeSub,Driver *drv,char *SimulIP,int SimulPort);
+
 
 static char flag_ini = 0;
 

@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Simul.o \
 	${OBJECTDIR}/UDPTrasport.o \
 	${OBJECTDIR}/cycleBuff.o \
 	${OBJECTDIR}/drivers/DoVds.o \
@@ -75,11 +74,6 @@ LDLIBSOPTIONS=
 /usr/local/lib/libfp8.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p /usr/local/lib
 	${LINK.c} -o /usr/local/lib/libfp8.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
-
-${OBJECTDIR}/Simul.o: Simul.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Simul.o Simul.c
 
 ${OBJECTDIR}/UDPTrasport.o: UDPTrasport.c
 	${MKDIR} -p ${OBJECTDIR}

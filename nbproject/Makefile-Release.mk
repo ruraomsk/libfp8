@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Simul.o \
 	${OBJECTDIR}/UDPTrasport.o \
 	${OBJECTDIR}/cycleBuff.o \
 	${OBJECTDIR}/drivers/DoVds.o \
@@ -75,11 +74,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibfp8.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibfp8.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
-
-${OBJECTDIR}/Simul.o: Simul.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Simul.o Simul.c
 
 ${OBJECTDIR}/UDPTrasport.o: UDPTrasport.c
 	${MKDIR} -p ${OBJECTDIR}

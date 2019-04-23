@@ -97,6 +97,7 @@
           <preprocessorList>
             <Elem>LINUXMODE</Elem>
           </preprocessorList>
+          <warningLevel>0</warningLevel>
         </cTool>
         <linkerTool>
           <output>/usr/local/lib/libfp8.${CND_DLIB_EXT}</output>

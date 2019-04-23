@@ -78,72 +78,72 @@ LDLIBSOPTIONS=
 ${OBJECTDIR}/UDPTrasport.o: UDPTrasport.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UDPTrasport.o UDPTrasport.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UDPTrasport.o UDPTrasport.c
 
 ${OBJECTDIR}/cycleBuff.o: cycleBuff.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cycleBuff.o cycleBuff.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cycleBuff.o cycleBuff.c
 
 ${OBJECTDIR}/drivers/DoVds.o: drivers/DoVds.c
 	${MKDIR} -p ${OBJECTDIR}/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/DoVds.o drivers/DoVds.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/DoVds.o drivers/DoVds.c
 
 ${OBJECTDIR}/drivers/ai12_vas.o: drivers/ai12_vas.c
 	${MKDIR} -p ${OBJECTDIR}/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/ai12_vas.o drivers/ai12_vas.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/ai12_vas.o drivers/ai12_vas.c
 
 ${OBJECTDIR}/drivers/ao16.o: drivers/ao16.c
 	${MKDIR} -p ${OBJECTDIR}/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/ao16.o drivers/ao16.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/ao16.o drivers/ao16.c
 
 ${OBJECTDIR}/drivers/do32_pti.o: drivers/do32_pti.c
 	${MKDIR} -p ${OBJECTDIR}/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/do32_pti.o drivers/do32_pti.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/do32_pti.o drivers/do32_pti.c
 
 ${OBJECTDIR}/drivers/emul8enc.o: drivers/emul8enc.c
 	${MKDIR} -p ${OBJECTDIR}/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/emul8enc.o drivers/emul8enc.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/emul8enc.o drivers/emul8enc.c
 
 ${OBJECTDIR}/drivers/vds32_pti.o: drivers/vds32_pti.c
 	${MKDIR} -p ${OBJECTDIR}/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/vds32_pti.o drivers/vds32_pti.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drivers/vds32_pti.o drivers/vds32_pti.c
 
 ${OBJECTDIR}/drvio.o: drvio.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvio.o drvio.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/drvio.o drvio.c
 
 ${OBJECTDIR}/jfes.o: jfes.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jfes.o jfes.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jfes.o jfes.c
 
 ${OBJECTDIR}/modbus-cpc.o: modbus-cpc.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/modbus-cpc.o modbus-cpc.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/modbus-cpc.o modbus-cpc.c
 
 ${OBJECTDIR}/netphoto.o: netphoto.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/netphoto.o netphoto.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/netphoto.o netphoto.c
 
 ${OBJECTDIR}/savervar.o: savervar.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/savervar.o savervar.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/savervar.o savervar.c
 
 ${OBJECTDIR}/variables.o: variables.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/variables.o variables.c
+	$(COMPILE.c) -g -w -DLINUXMODE -I/root/linux-4.14.70 -I/D/cpc108/include -I/D/newPro/dspa/drivers -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/variables.o variables.c
 
 # Subprojects
 .build-subprojects:

@@ -101,14 +101,16 @@ void sendVariables() {
 }
 
 void reciveVariables() {
-    while (1) {
         struct sockaddr_in from;
         socklen_t fromLength = sizeof (from);
         int received_bytes = recvfrom(udpport, (char*) buffer, setUp->lenvar, 0, &from, &fromLength);
-        if (received_bytes <= 0) return;
-        if (received_bytes != setUp->lenvar) return;
+        if ((received_bytes <= 0)||(received_bytes != setUp->lenvar)) 
+        {
+            syslog(LOG_INFO,"reciveVariables failed to read packet: return value = %d\n", received_bytes);
+            return;
+        };
+
         memcpy(setUp->varbufer, buffer, setUp->lenvar);
-    }
 }
 
 int getNomer(){

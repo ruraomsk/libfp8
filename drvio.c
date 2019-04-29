@@ -132,7 +132,8 @@ void iniBufDrivers() {
     Driver *drv = drv_ptr;
     while (drv->code_driver != 0) {
         table_drv *table = drv->table;
-        memset(table->data, 0xff, drv->len_buffer);
+        // memset(table->data, 0xff, drv->len_buffer);
+        memset(table->data, 0x0, drv->len_buffer);
         drv++;
     }
 }

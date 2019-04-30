@@ -15,7 +15,7 @@
 #define MODBUS_CPC_H
 #include <modbus/modbus.h>
 #include <sys/time.h>
-#define NB_CONNECTION    20
+#define NB_CONNECTION    100
 #define RECONNECT_TIME    5
 
 typedef struct __attribute__((packed)){

@@ -1,47 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name=".vscode">
+        <df name="ipch">
+          <df name="2b4c9725146d8bcc">
+          </df>
+          <df name="4bf656289d7acb13">
+          </df>
+          <df name="5aecfdbea80492da">
+          </df>
+          <df name="7d9feb728257f566">
+          </df>
+          <df name="8a4e01ae3e4d3d76">
+          </df>
+          <df name="9234791301d8de28">
+          </df>
+          <df name="9a0b6441b35b63e6">
+          </df>
+          <df name="b004d32e5d721b76">
+          </df>
+          <df name="b68e2d1231d4dcd7">
+          </df>
+          <df name="c0c83e058a8f7997">
+          </df>
+          <df name="c95f63af43a2e7c9">
+          </df>
+          <df name="d9589ffcb6efa560">
+          </df>
+          <df name="d958aafcb6efb811">
+          </df>
+          <df name="fa05285c6769403d">
+          </df>
+        </df>
+      </df>
+      <df name="drivers">
+        <in>DoVds.c</in>
+        <in>DoVds.h</in>
+        <in>ai12_vas.c</in>
+        <in>ai12_vas.h</in>
+        <in>ao16.c</in>
+        <in>ao16.h</in>
+        <in>do32_pti.c</in>
+        <in>do32_pti.h</in>
+        <in>emul8enc.c</in>
+        <in>emul8enc.h</in>
+        <in>fds16r.h</in>
+        <in>sbkfp7.h</in>
+        <in>vas84r.h</in>
+        <in>vchs2.h</in>
+        <in>vds32_pti.c</in>
+        <in>vds32_pti.h</in>
+        <in>vds32r.h</in>
+        <in>vencf8l.h</in>
+      </df>
+      <in>UDPTrasport.c</in>
+      <in>UDPTrasport.h</in>
+      <in>cycleBuff.c</in>
+      <in>cycleBuff.h</in>
+      <in>drvio.c</in>
+      <in>drvio.h</in>
+      <in>jfes.c</in>
+      <in>jfes.h</in>
+      <in>misparw.h</in>
+      <in>modbus-cpc.c</in>
+      <in>modbus-cpc.h</in>
+      <in>netphoto.c</in>
+      <in>netphoto.h</in>
+      <in>savervar.c</in>
+      <in>typedef.h</in>
+      <in>variables.c</in>
+      <in>variables.h</in>
+    </df>
+  </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="2">
+    <conf name="Default" type="0">
       <toolsSet>
         <developmentServer>root@192.168.10.248:22</developmentServer>
         <platform>2</platform>
       </toolsSet>
-      <dbx_gdbdebugger version="1">
-        <gdb_pathmaps>
-        </gdb_pathmaps>
-        <gdb_interceptlist>
-          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
-        </gdb_interceptlist>
-        <gdb_options>
-          <DebugOptions>
-          </DebugOptions>
-        </gdb_options>
-        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
-      </dbx_gdbdebugger>
-      <nativedebugger version="1">
-        <engine>gdb</engine>
-      </nativedebugger>
-      <runprofile version="9">
-        <runcommandpicklist>
-          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
-          <runcommandpicklistitem>./copyfp8</runcommandpicklistitem>
-          <runcommandpicklistitem>./copyfp8.bash</runcommandpicklistitem>
-        </runcommandpicklist>
-        <runcommand>./copyfp8.bash</runcommand>
-        <rundir></rundir>
-        <buildfirst>true</buildfirst>
-        <terminal-type>0</terminal-type>
-        <remove-instrumentation>0</remove-instrumentation>
-        <environment>
-        </environment>
-      </runprofile>
-    </conf>
-    <conf name="Release" type="2">
-      <toolsSet>
-        <developmentServer>root@192.168.1.189:22</developmentServer>
-        <platform>2</platform>
-      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
       <dbx_gdbdebugger version="1">
         <gdb_pathmaps>
         </gdb_pathmaps>
@@ -62,8 +112,8 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>"${OUTPUT_PATH}"</runcommand>
-        <rundir></rundir>
-        <buildfirst>true</buildfirst>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>

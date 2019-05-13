@@ -55,8 +55,6 @@ void dovds_dw(table_drv *drv){
 
     if(devdata->tempDoVds != vds_date.i){
         devdata->NumErr++;
-        printf("Kol-vo err - %d\n",devdata->NumErr);
-        printf("Now - %lx,     wait - %lx\n", vds_date.i, devdata->tempDoVds);
     }
 
     // fds

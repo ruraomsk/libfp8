@@ -1,0 +1,86 @@
+make: Warning: File 'Makefile' has modification time 42927 s in the future
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/UDPTrasport.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/UDPTrasport.o  UDPTrasport.c
+UDPTrasport.c: In function ‘openUDPport’:
+UDPTrasport.c:43:26: warning: passing argument 2 of ‘bind’ from incompatible pointer type [-Wincompatible-pointer-types]
+         if (bind(handle, &address, sizeof (address)) < 0) {
+                          ^
+In file included from UDPTrasport.c:16:0:
+/usr/include/sys/socket.h:117:12: note: expected ‘const struct sockaddr *’ but argument is of type ‘struct sockaddr_in *’
+ extern int bind (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len)
+            ^~~~
+UDPTrasport.c: In function ‘sendVariables’:
+UDPTrasport.c:96:78: warning: passing argument 5 of ‘sendto’ from incompatible pointer type [-Wincompatible-pointer-types]
+     int sent_bytes = sendto(udpport, (const char*) buffer, setUp->lenvar, 0, &address, sizeof (address));
+                                                                              ^
+In file included from UDPTrasport.c:16:0:
+/usr/include/sys/socket.h:157:16: note: expected ‘const struct sockaddr *’ but argument is of type ‘struct sockaddr_in *’
+ extern ssize_t sendto (int __fd, const void *__buf, size_t __n,
+                ^~~~~~
+UDPTrasport.c: In function ‘reciveVariables’:
+UDPTrasport.c:106:82: warning: passing argument 5 of ‘recvfrom’ from incompatible pointer type [-Wincompatible-pointer-types]
+         int received_bytes = recvfrom(udpport, (char*) buffer, setUp->lenvar, 0, &from, &fromLength);
+                                                                                  ^
+In file included from UDPTrasport.c:16:0:
+/usr/include/sys/socket.h:168:16: note: expected ‘struct sockaddr * restrict’ but argument is of type ‘struct sockaddr_in *’
+ extern ssize_t recvfrom (int __fd, void *__restrict __buf, size_t __n,
+                ^~~~~~~~
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drvio.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drvio.o  drvio.c
+drvio.c: In function ‘openUDPRecive’:
+drvio.c:195:22: warning: passing argument 2 of ‘bind’ from incompatible pointer type [-Wincompatible-pointer-types]
+     if (bind(handle, &addressRecive, sizeof (addressRecive)) < 0) {
+                      ^
+In file included from drvio.c:8:0:
+/usr/include/sys/socket.h:117:12: note: expected ‘const struct sockaddr *’ but argument is of type ‘struct sockaddr_in *’
+ extern int bind (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len)
+            ^~~~
+drvio.c: In function ‘openUDPSend’:
+drvio.c:221:25: warning: passing argument 2 of ‘connect’ from incompatible pointer type [-Wincompatible-pointer-types]
+     if (connect(handle, &addressSend, sizeof (addressSend)) < 0) {
+                         ^
+In file included from drvio.c:8:0:
+/usr/include/sys/socket.h:131:12: note: expected ‘const struct sockaddr *’ but argument is of type ‘struct sockaddr_in *’
+ extern int connect (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len);
+            ^~~~~~~
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/netphoto.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/netphoto.o  netphoto.c
+netphoto.c: In function ‘lister’:
+netphoto.c:71:9: warning: implicit declaration of function ‘connection_handler’ [-Wimplicit-function-declaration]
+         connection_handler(new_sock);
+         ^~~~~~~~~~~~~~~~~~
+netphoto.c: At top level:
+netphoto.c:82:6: warning: conflicting types for ‘connection_handler’
+ void connection_handler(int *socket_desc) {
+      ^~~~~~~~~~~~~~~~~~
+netphoto.c:71:9: note: previous implicit declaration of ‘connection_handler’ was here
+         connection_handler(new_sock);
+         ^~~~~~~~~~~~~~~~~~
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/variables.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/variables.o  variables.c
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/savervar.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/savervar.o  savervar.c
+savervar.c: In function ‘setValueAsFloat’:
+savervar.c:152:51: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘double’ [-Wformat=]
+         syslog(LOG_ERR,"Don't write %s as float =%d not find id\n", name, value);
+                                                   ^
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/jfes.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/jfes.o  jfes.c
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/cycleBuff.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/cycleBuff.o  cycleBuff.c
+cycleBuff.c: In function ‘cycle_lister’:
+cycleBuff.c:387:9: warning: implicit declaration of function ‘close’ [-Wimplicit-function-declaration]
+         close(client_sock);
+         ^~~~~
+cycleBuff.c: In function ‘conn_handler’:
+cycleBuff.c:424:15: warning: implicit declaration of function ‘write’ [-Wimplicit-function-declaration]
+         res = write(sock, namevar, sizeof (int));
+               ^~~~~
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/modbus-cpc.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/modbus-cpc.o  modbus-cpc.c
+modbus-cpc.c: In function ‘Reconnect’:
+modbus-cpc.c:113:13: warning: implicit declaration of function ‘WakeUpDriver’ [-Wimplicit-function-declaration]
+             WakeUpDriver();
+             ^~~~~~~~~~~~
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/do32_pti.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/do32_pti.o  drivers/do32_pti.c
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/ao16.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/ao16.o  drivers/ao16.c
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/emul8enc.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/emul8enc.o  drivers/emul8enc.c
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/ai12_vas.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/ai12_vas.o  drivers/ai12_vas.c
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/vds32_pti.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/vds32_pti.o  drivers/vds32_pti.c
+gcc -c -g -DLINUXMODE -fPIC -MMD -MP -MF "/root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/DoVds.o.d" -o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/DoVds.o  drivers/DoVds.c
+gcc -o /usr/local/lib/libfp8.so /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drvio.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/netphoto.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/variables.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/savervar.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/jfes.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/cycleBuff.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/modbus-cpc.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/UDPTrasport.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/emul8enc.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/ai12_vas.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/vds32_pti.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/DoVds.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/do32_pti.o /root/.netbeans/remote/192.168.10.248/ivan-Windows-x86_64/D/newPro/libfp8/obj/drivers/ao16.o -shared -fPIC
+>>> Regenerating /etc/ld.so.cache...
+Lib installed.
+make: warning:  Clock skew detected.  Your build may be incomplete.

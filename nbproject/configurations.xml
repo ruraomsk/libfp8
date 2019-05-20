@@ -10,6 +10,7 @@
         <in>emul8enc.c</in>
         <in>vds32_pti.c</in>
       </df>
+      <in>SaveVarFile.c</in>
       <in>UDPTrasport.c</in>
       <in>cycleBuff.c</in>
       <in>drvio.c</in>
@@ -61,6 +62,10 @@
           <preBuildCommand></preBuildCommand>
         </preBuild>
       </makefileType>
+      <item path="SaveVarFile.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
       <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
         </cTool>

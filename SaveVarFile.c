@@ -23,14 +23,14 @@ int FileOpen(char * name) {
 
 void FileSaveVarInt(char * str, int id) {
     FileOpen(str);
-    fprintf(BufVar, "%d:%d:%d %d\n",timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, id);
+    fprintf(BufVar, "%d\n", id);
     FileClose();
 }
 
 void FileSaveVarDouble(char * str, double id) {
     FileOpen(str);
     timeV();
-    fprintf(BufVar, "%d:%d:%d %lf\n",timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, id);
+    fprintf(BufVar, "%lf\n", id);
     FileClose();
 }
 

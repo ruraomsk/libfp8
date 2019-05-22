@@ -261,7 +261,7 @@ void writeInpRegs(ModbusDevice *md) {
                 break;
             case sint8b:
             case float8b:
-                MODBUS_SET_INT64_TO_INT16(map->tab_input_registers, ir->address, *((unsigned long long int *) ir->value));
+                MODBUS_SET_INT64_TO_INT16(map->tab_input_registers, ir->address, *((long long int *) ir->value));
                 break;
         }
         ir++;
@@ -290,7 +290,7 @@ void readInpRegs(ModbusDevice *md) {
                 break;
             case sint8b:
             case float8b:
-                *((unsigned long long int *) ir->value) = MODBUS_GET_INT64_FROM_INT16(map->tab_input_registers, ir->address);
+                *((long long int *) ir->value) = MODBUS_GET_INT64_FROM_INT16(map->tab_input_registers, ir->address);
                 break;
         }
         ir++;
@@ -344,7 +344,7 @@ void readHoldRegs(ModbusDevice *md) {
                 break;
             case sint8b:
             case float8b:
-                *((unsigned long long int *) hr->value) = MODBUS_GET_INT64_FROM_INT16(map->tab_registers, hr->address);
+                *((long long int *) hr->value) = MODBUS_GET_INT64_FROM_INT16(map->tab_registers, hr->address);
                 break;
         }
         hr++;
@@ -373,7 +373,7 @@ void writeHoldRegs(ModbusDevice *md) {
                 break;
             case sint8b:
             case float8b:
-                MODBUS_SET_INT64_TO_INT16(map->tab_registers, hr->address, *((unsigned long long int *) hr->value));
+                MODBUS_SET_INT64_TO_INT16(map->tab_registers, hr->address, *((long long int *) hr->value));
                 break;
         }
         hr++;

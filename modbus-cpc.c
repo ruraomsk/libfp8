@@ -257,7 +257,8 @@ void writeInpRegs(ModbusDevice *md) {
             case uint4b:
             case sint4b:
             case float4b:
-                MODBUS_SET_INT32_TO_INT16(map->tab_input_registers, ir->address, *((int *) ir->value));
+                map->tab_input_registers[ir->address]= *((int *) ir->value )>>16;
+                map->tab_input_registers[ir->address]= *((int *) ir->value) & 0xffff;
                 break;
             case sint8b:
             case float8b:
@@ -286,7 +287,7 @@ void readInpRegs(ModbusDevice *md) {
             case uint4b:
             case sint4b:
             case float4b:
-                *((int *) ir->value) = MODBUS_GET_INT32_FROM_INT16(map->tab_input_registers, ir->address);
+                *((int *) ir->value) = (map->tab_input_registers[ir->address]<<16)|(map->tab_input_registers[ir->address+1]);
                 break;
             case sint8b:
             case float8b:

@@ -54,7 +54,7 @@ static type_drivers tab_tp[] = {
 
 
 static union {
-    __off_t ppos;
+    off_t ppos;
     def_dev tdef;
 } tfd;
 

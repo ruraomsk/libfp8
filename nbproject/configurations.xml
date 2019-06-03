@@ -48,14 +48,9 @@
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <buildCommand>${MAKE} -f Makefile AKEY=D</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath></executablePath>
-          <cTool>
-            <preprocessorList>
-              <Elem>LINUXMODE</Elem>
-            </preprocessorList>
-          </cTool>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
@@ -64,42 +59,42 @@
       </makefileType>
       <item path="SaveVarFile.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
       <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
       <item path="cycleBuff.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
-      <item path="drivers/DoVds.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-        </cTool>
+      <item path="drivers/DoVds.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="drivers/ai12_vas.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-        </cTool>
+      <item path="drivers/ai12_vas.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="drivers/ao16.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-        </cTool>
+      <item path="drivers/ao16.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="drivers/do32_pti.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-        </cTool>
+      <item path="drivers/do32_pti.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="drivers/emul8enc.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-        </cTool>
+      <item path="drivers/emul8enc.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="drivers/vds32_pti.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-        </cTool>
+      <item path="drivers/vds32_pti.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="drvio.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
       <folder path="0/drivers">
@@ -111,22 +106,143 @@
       </folder>
       <item path="jfes.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
       <item path="modbus-cpc.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
       <item path="netphoto.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
       <item path="savervar.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
       <item path="variables.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+    </conf>
+    <conf name="Release" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-g -fPIC"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile AKEY=R</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="SaveVarFile.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="cycleBuff.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="drivers/DoVds.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="drivers/ai12_vas.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="drivers/ao16.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="drivers/do32_pti.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="drivers/emul8enc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="drivers/vds32_pti.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="drvio.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <folder path="0/drivers">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <item path="jfes.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="modbus-cpc.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="netphoto.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="savervar.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="variables.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>LINUXMODE</Elem>
+          </preprocessorList>
         </cTool>
       </item>
     </conf>

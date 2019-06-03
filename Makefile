@@ -6,6 +6,7 @@ DIRPATH = /root/proj
 DDPATH = /root/proj/$(NAMEPROJ)
 DRPATH = drivers
 OBJDIR = obj
+AKEY = NULL
 DMKEY = -c -g -DLINUXMODE -fPIC -MMD -MP -MF
 RMKEY = -c -O2 -DLINUXMODE -fPIC -MMD -MP -MF
 ALLFILES = $(wildcard *.c)
@@ -20,7 +21,12 @@ all: clean mObj mLib install
 mObj: cdir $(ALLOBJ)
 
 $(ALLOBJ):
+ifeq "$(AKEY)" "D"
 	gcc $(DMKEY) "$(MAKEPATH)/$(OBJDIR)/$@.d" -o $(MAKEPATH)/$(OBJDIR)/$@ $(patsubst %.o, %.c, $@)
+endif
+ifeq "$(AKEY)" "R"
+	gcc $(RMKEY) "$(MAKEPATH)/$(OBJDIR)/$@.d" -o $(MAKEPATH)/$(OBJDIR)/$@ $(patsubst %.o, %.c, $@)
+endif
 
 mLib:
 	gcc -o $(LIBPATH)/lib$(NAMEPROJ).so $(wildcard $(MAKEPATH)/$(OBJDIR)/*.o) $(wildcard $(MAKEPATH)/$(OBJDIR)/$(DRPATH)/*.o) -shared -fPIC

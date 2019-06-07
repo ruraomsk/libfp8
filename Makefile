@@ -1,7 +1,6 @@
 # для других проектов изменить конечный каталог
 NAMEPROJ = fp8
 MAKEPATH = $(shell pwd)
-INCLPATH = /usr/local/include/$(NAMEPROJ)
 DIRPATH = /root/proj
 DDPATH = /root/proj/$(NAMEPROJ)
 DRPATH = drivers
@@ -13,7 +12,10 @@ ALLFILES = $(wildcard *.c)
 OBJECTS := $(patsubst %.c, %.o, $(wildcard *.c))
 OBJDRIVE := $(patsubst %.c, %.o, $(wildcard $(DRPATH)/*.c))
 ALLOBJ = $(OBJECTS) $(OBJDRIVE)
+INCLPATH = /usr/local/include/$(NAMEPROJ)
 LIBPATH = /usr/local/lib
+INCLPATHOPWRT = /usr/include/$(NAMEPROJ)
+LIBPATHOPWRT = /usr/lib
 IP = NULL
 
 all: clean mObj mLib install
@@ -52,6 +54,12 @@ DevInst:
 	@cp $(DDPATH)/99$(NAMEPROJ)8 /etc/env.d
 	@env-update && source /etc/profile
 	@echo Lib installed.
+
+MOpWrt: clean mObj 
+	gcc -L/usr/lib -lmodbus -o $(LIBPATHOPWRT)/lib$(NAMEPROJ).so $(wildcard $(MAKEPATH)/$(OBJDIR)/*.o) $(wildcard $(MAKEPATH)/$(OBJDIR)/$(DRPATH)/*.o) -shared -fPIC
+	@mkdir -p $(INCLPATHOPWRT)/$(DRPATH)
+	@cp $(MAKEPATH)/*.h* $(INCLPATHOPWRT)
+	@cp $(MAKEPATH)/$(DRPATH)/*.h* $(INCLPATHOPWRT)/$(DRPATH)
 
 cdir:
 	@mkdir -p $(MAKEPATH)/$(OBJDIR)/$(DRPATH)

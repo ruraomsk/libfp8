@@ -509,7 +509,7 @@ ContextServer *slsrv_init(ModbusDevice *mdev) {
         return NULL;
     cnt->port = mdev->port;
     cnt->ctx = modbus_new_tcp("0.0.0.0", cnt->port);
-    modbus_set_indication_timeout(cnt->ctx,1,200000);
+    // modbus_set_indication_timeout(cnt->ctx,1,200000);
     cnt->ncoil = getSizeType(mdev->coil);
     cnt->ndi = getSizeType(mdev->di);
     cnt->nir = getSizeType(mdev->ir);

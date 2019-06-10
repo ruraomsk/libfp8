@@ -73,7 +73,7 @@ cdir:
 
 clean:
 	@rm -f $(MAKEPATH)/$(OBJDIR)/*.o*
-
+	@rm -f $(MAKEPATH)/$(OBJDIR)/$(DRPATH)/*.o*
 # принимает параметр IP=%
 copyTo:
 	ssh root@$(IP) 'mkdir -p $(DDPATH)/$(DRPATH)'

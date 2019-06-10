@@ -5,30 +5,37 @@ DIRPATH = /root/proj
 DDPATH = /root/proj/$(NAMEPROJ)
 DRPATH = drivers
 OBJDIR = obj
-AKEY = NULL
-DMKEY = -c -g -DLINUXMODE -fPIC -MMD -MP -MF
-RMKEY = -c -O2 -DLINUXMODE -fPIC -MMD -MP -MF
+ifeq "$(AKEY)" "D"
+DK = -g
+endif
+ifeq "$(AKEY)" "R"
+DK = -O2
+endif
+ifeq "$(SYS)" "G"
+INCLPATH = /usr/local/include/$(NAMEPROJ)
+LIBPATH = /usr/local/lib
+endif
+ifeq "$(SYS)" "OW"
+INCLPATH = /usr/include/$(NAMEPROJ)
+LIBPATH = /usr/lib
+endif
+MKEY = -c $(DK) -DLINUXMODE -fPIC -MMD -MP -MF
 ALLFILES = $(wildcard *.c)
 OBJECTS := $(patsubst %.c, %.o, $(wildcard *.c))
 OBJDRIVE := $(patsubst %.c, %.o, $(wildcard $(DRPATH)/*.c))
 ALLOBJ = $(OBJECTS) $(OBJDRIVE)
-INCLPATH = /usr/local/include/$(NAMEPROJ)
-LIBPATH = /usr/local/lib
-INCLPATHOPWRT = /usr/include/$(NAMEPROJ)
-LIBPATHOPWRT = /usr/lib
 IP = NULL
 
+ifeq "$(SYS)" "G"
 all: clean mObj mLib install
+endif
+ifeq "$(SYS)" "OW"
+all: clean mObj MOpWrt
+endif
 
 mObj: cdir $(ALLOBJ)
-
 $(ALLOBJ):
-ifeq "$(AKEY)" "D"
-	gcc $(DMKEY) "$(MAKEPATH)/$(OBJDIR)/$@.d" -o $(MAKEPATH)/$(OBJDIR)/$@ $(patsubst %.o, %.c, $@)
-endif
-ifeq "$(AKEY)" "R"
-	gcc $(RMKEY) "$(MAKEPATH)/$(OBJDIR)/$@.d" -o $(MAKEPATH)/$(OBJDIR)/$@ $(patsubst %.o, %.c, $@)
-endif
+	gcc $(MKEY) "$(MAKEPATH)/$(OBJDIR)/$@.d" -o $(MAKEPATH)/$(OBJDIR)/$@ $(patsubst %.o, %.c, $@)
 
 mLib:
 	gcc -o $(LIBPATH)/lib$(NAMEPROJ).so $(wildcard $(MAKEPATH)/$(OBJDIR)/*.o) $(wildcard $(MAKEPATH)/$(OBJDIR)/$(DRPATH)/*.o) -shared -fPIC
@@ -55,11 +62,11 @@ DevInst:
 	@env-update && source /etc/profile
 	@echo Lib installed.
 
-MOpWrt: clean mObj 
-	gcc -L/usr/lib -lmodbus -o $(LIBPATHOPWRT)/lib$(NAMEPROJ).so $(wildcard $(MAKEPATH)/$(OBJDIR)/*.o) $(wildcard $(MAKEPATH)/$(OBJDIR)/$(DRPATH)/*.o) -shared -fPIC
-	@mkdir -p $(INCLPATHOPWRT)/$(DRPATH)
-	@cp $(MAKEPATH)/*.h* $(INCLPATHOPWRT)
-	@cp $(MAKEPATH)/$(DRPATH)/*.h* $(INCLPATHOPWRT)/$(DRPATH)
+MOpWrt:  
+	gcc -L/usr/lib -lmodbus -o $(LIBPATH)/lib$(NAMEPROJ).so $(wildcard $(MAKEPATH)/$(OBJDIR)/*.o) $(wildcard $(MAKEPATH)/$(OBJDIR)/$(DRPATH)/*.o) -shared -fPIC
+	@mkdir -p $(INCLPATH)/$(DRPATH)
+	@cp $(MAKEPATH)/*.h* $(INCLPATH)
+	@cp $(MAKEPATH)/$(DRPATH)/*.h* $(INCLPATH)/$(DRPATH)
 
 cdir:
 	@mkdir -p $(MAKEPATH)/$(OBJDIR)/$(DRPATH)

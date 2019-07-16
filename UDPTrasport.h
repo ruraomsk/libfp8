@@ -25,7 +25,7 @@ typedef struct {
 
 int initUDP(int master, int nomer, SetupUDP *setup);
 void sendVariables(void);
-void reciveVariables(void);
+int reciveVariables(void);
 int getNomer(void);
 void closeUDP(void);
 int openUDPport(char *ip, int port);

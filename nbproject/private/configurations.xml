@@ -3,48 +3,6 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
       <df name=".vscode">
-        <df name="ipch">
-          <df name="2b4c9725146d8bcc">
-          </df>
-          <df name="36dd532153161296">
-          </df>
-          <df name="4bf656289d7acb13">
-          </df>
-          <df name="5aecfdbea80492da">
-          </df>
-          <df name="7d9feb728257f566">
-          </df>
-          <df name="7e9a6b6ffac3b403">
-          </df>
-          <df name="8a4e01ae3e4d3d76">
-          </df>
-          <df name="9234791301d8de28">
-          </df>
-          <df name="9a0b6441b35b63e6">
-          </df>
-          <df name="aa0d3fcfb443083f">
-          </df>
-          <df name="b004d32e5d721b76">
-          </df>
-          <df name="b68e2d1231d4dcd7">
-          </df>
-          <df name="c0c83e058a8f7997">
-          </df>
-          <df name="c7659ffb0d7c2ff1">
-          </df>
-          <df name="c95f63af43a2e7c9">
-          </df>
-          <df name="cabf23e6c0307a21">
-          </df>
-          <df name="d9589ffcb6efa560">
-          </df>
-          <df name="d958aafcb6efb811">
-          </df>
-          <df name="fa05285c6769403d">
-          </df>
-          <df name="fc6bcb25657d61e8">
-          </df>
-        </df>
       </df>
       <df name="drivers">
         <in>DoVds.c</in>

@@ -3,7 +3,7 @@
  */
 
 /* 
- * File:   UDPTrasport.c
+ * File:   UDPTransport.c
  * Author: rusin
  * 
  * Created on 4 мая 2018 г., 9:19
@@ -19,7 +19,7 @@
 #include <fcntl.h>
 
 
-#include "UDPTrasport.h"
+#include "UDPTransport.h"
 
 SetupUDP *setUp;
 unsigned char * buffer = NULL;

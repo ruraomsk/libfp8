@@ -5,14 +5,14 @@
  */
 
 /* 
- * File:   UDPTrasport.h
+ * File:   UDPTransport.h
  * Author: rusin
  *
  * Created on 4 мая 2018 г., 9:19
  */
 
-#ifndef UDPTRASPORT_H
-#define UDPTRASPORT_H
+#ifndef UDPTransport_H
+#define UDPTransport_H
 
 typedef struct {
     char *ip1;
@@ -29,4 +29,4 @@ int reciveVariables(void);
 int getNomer(void);
 void closeUDP(void);
 int openUDPport(char *ip, int port);
-#endif /* UDPTRASPORT_H */
+#endif /* UDPTransport_H */

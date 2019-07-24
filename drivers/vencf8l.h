@@ -47,8 +47,10 @@ typedef struct __attribute__((packed))
 {  
   sslong    gray[8];       // исходная - код Грея 
   sslong    venc[8];       // декодированная   
-  int       numE;          // переменная для выбора цикла (выбирает следующий BUS)
-  short     data_fds;        // данные для FDS  
+  short     DiagnFDS;      // диагностика ФДС
+  short     DiagnVDS;      // диагностика ВДС 
+  short     numE;          // переменная для выбора цикла (выбирает следующий BUS)
+  char emptyspace[64];
 } vencf8_data;
 
 #define VENCF 0x2

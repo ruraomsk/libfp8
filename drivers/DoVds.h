@@ -23,21 +23,4 @@ typedef struct __attribute__((packed))
   unsigned char init;
 }doVds_inipar;
 
-
-
-// typedef struct __attribute__((packed))
-// { 
-//   unsigned char tadr; 
-// } vds32pti_inimod;
-
-// typedef struct __attribute__((packed))
-// {
-//   ssbool data[32];
-//   unsigned char workok;
-// } vds32pti_data;
-
-
-
-
-
 #endif /* DOVDS_H */

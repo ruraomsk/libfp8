@@ -18,6 +18,7 @@ typedef struct __attribute__((packed))
 typedef struct __attribute__((packed))
 {
   unsigned long data[8];    // показания энкодера по каналам
+  char emptyspace[64];
 } em8encpti_data;
 
 #endif /* EMUL8ENC_H */

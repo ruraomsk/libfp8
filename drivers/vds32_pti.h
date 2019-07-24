@@ -29,6 +29,7 @@ typedef struct __attribute__((packed))
 {
   ssbool data[32];
   unsigned char workok;
+  char emptyspace[64];
 } vds32pti_data;
 
 #endif /* VDS32_PTI_H */

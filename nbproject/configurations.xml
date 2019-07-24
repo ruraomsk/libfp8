@@ -12,7 +12,6 @@
       </df>
       <in>SaveVarFile.c</in>
       <in>UDPTransport.c</in>
-      <in>UDPTrasport.c</in>
       <in>cycleBuff.c</in>
       <in>drvio.c</in>
       <in>jfes.c</in>
@@ -68,10 +67,6 @@
         </cTool>
       </item>
       <item path="UDPTransport.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="UDPTrasport.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
         </cTool>
       </item>
@@ -159,13 +154,6 @@
         </preBuild>
       </makefileType>
       <item path="SaveVarFile.c" ex="false" tool="0" flavor2="0">
-        <cTool flags="0">
-          <preprocessorList>
-            <Elem>LINUXMODE</Elem>
-          </preprocessorList>
-        </cTool>
-      </item>
-      <item path="UDPTrasport.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
           <preprocessorList>
             <Elem>LINUXMODE</Elem>

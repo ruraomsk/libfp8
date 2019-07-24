@@ -1,6 +1,7 @@
 #include <sys/io.h>
 #include "DoVds.h"
 #include <stdio.h>
+#include <syslog.h>
 
 #define devaddr (drv->address)
 #define devdata ((doVds_data *)(drv->data))

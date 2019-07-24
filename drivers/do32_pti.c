@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   do32_pti.c
- * Author: rusin
- * 
- * Created on 27 марта 2018 г., 10:44
- */
 #include <sys/io.h>
 #include "do32_pti.h"
+#include <stdio.h>
+#include <syslog.h>
+
 #define devaddr (drv->address)
 #define devdata ((do32_data *)(drv->data))
 

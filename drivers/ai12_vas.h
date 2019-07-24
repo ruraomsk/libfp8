@@ -21,6 +21,7 @@ typedef struct __attribute__ ((packed))
 { 
     ssint VasData[12];
     short NumK;
+    char emptyspace[64];
 } AI12vas_data;
 
 void AI12vas_ini(table_drv* drv);

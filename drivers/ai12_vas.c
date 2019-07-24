@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <sys/io.h>
 #include <sys/time.h>
+#include <sys/syslog.h>
 #include "ai12_vas.h"
+#include <syslog.h>
 
 #define devVasadr (drv->address)
 #define devVasini ((AI12vas_inimod *)drv->inimod)

@@ -26,7 +26,6 @@
       <in>SaveVarFile.h</in>
       <in>UDPTransport.c</in>
       <in>UDPTransport.h</in>
-      <in>UDPTrasport.c</in>
       <in>cycleBuff.c</in>
       <in>cycleBuff.h</in>
       <in>drvio.c</in>

@@ -35,6 +35,7 @@ typedef struct __attribute__ ((packed))
 { ssint adata[16];
   sschar asost[16];
   unsigned short aold[16];
+  char emptyspace[64];
 } ao16_data;
 
 void ao16_ini(table_drv* drv);

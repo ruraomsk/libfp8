@@ -12,6 +12,7 @@ typedef struct __attribute__((packed))
 typedef struct __attribute__((packed))
 {
   ssbool SbkSIGN[13];
+  char emptyspace[64];
 } sbk_data;
 
 #define SBK 0xCC

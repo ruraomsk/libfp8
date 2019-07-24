@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   ao16.c
- * Author: rusin
- * 
- * Created on 27 марта 2018 г., 12:17
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/io.h>
 #include <sys/time.h>
 #include "ao16.h"
+#include <syslog.h>
 
 #define devadr (drv->address)
 #define devini ((ao16_inimod *)drv->inimod)

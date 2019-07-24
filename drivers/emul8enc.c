@@ -3,8 +3,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <syslog.h>
-
 #include "emul8enc.h"
+
 #define devaddr (drv->address)
 // #define g_pDevData ((em8encpti_data *)(drv->data))
 // #define g_pDevIni ((em8encpti_inimod *)(drv->inimod))

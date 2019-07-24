@@ -28,9 +28,12 @@ typedef struct __attribute__((packed))
   ssbool sost[32];
   unsigned long old;
   unsigned char initok;
+  char emptyspace[64];
 } do32_data;
+
 typedef struct __attribute__((packed)) 
 {
   unsigned char init;
 }do32_pti_inipar;
+
 #endif /* DO32_PTI_H */

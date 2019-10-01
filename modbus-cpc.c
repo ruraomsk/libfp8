@@ -128,7 +128,7 @@ void *Reconnect(void *args) {
                         syslog(LOG_INFO, "Reconnect Sucsess!\n");
                     }
                 }
-                if (md->context->ctx2 == NULL) {
+                if (md->context->ctx2 == NULL && *md->ip2) {
                     syslog(LOG_INFO, "Reconnect %s \n", md->ip2);
                     ctx = modbus_new_tcp(md->ip2, md->port);
                     if (modbus_connect(ctx) == -1) {
